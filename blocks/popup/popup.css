@@ -4,6 +4,7 @@
     background-color: rgba(0,0,0,0.5);
     position: fixed;
     display: none;
+    padding-top: 45px;
 }
 .popup__opened{
     display: flex;
