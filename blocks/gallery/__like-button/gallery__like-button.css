@@ -1,8 +1,8 @@
-.gallery__button_action_like{
+.gallery__like-button{
     width: 20px;
     height: 19px;
     align-self: center;
     background-color: transparent;
     border: none;
-    background-image: url('../../../../images/heart_icon.svg');
+    background-image: url('../../../images/heart_icon.svg');
 }

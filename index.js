@@ -3,8 +3,7 @@ let popup = document.querySelector('.popup');
 let editButton = document.querySelector('.profile__button_action_edit')
 let userName = document.querySelector('.profile__name');
 let userJob = document.querySelector('.profile__job');
-// let nameInput = document.querySelector('.profile__name').innerText; Они что-то делают. Понять, если они делают что-то полезное, или нет.
-// let jobInput = document.querySelector('.profile__job').innerText;  
+
 let nameInput = document.querySelector('.form__item_action_edit-name');
 let jobInput = document.querySelector('.form__item_action_edit-job');
 nameInput.setAttribute('placeholder', userName.textContent);
