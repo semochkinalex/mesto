@@ -1,0 +1,14 @@
+.form__item{
+    border: 0;
+}
+.form__item:focus{
+    outline: none;
+}
+.form__item::placeholder{
+    border: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}

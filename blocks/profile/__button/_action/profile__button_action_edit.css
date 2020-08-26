@@ -1,0 +1,34 @@
+.profile__button_action_edit{
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: 1px solid white;
+    margin-left: 17px;
+    position: relative;
+    margin-top: 37px;
+}
+.profile__button_action_edit::before{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../../../images/pencil_icon.svg);
+    position: absolute;
+    content: '';
+}
+.profile__button_action_edit:hover{
+    opacity: 0.6;
+    transition: opacity 1s linear;
+}
+.profile__button_action_edit:focus{
+    outline: none;
+}
+@media screen and (max-width: 999px){
+    .profile__button_action_edit{
+        width: 18px;
+        height: 18px;   
+        margin-top: 34px;
+    }
+}

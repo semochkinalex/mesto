@@ -1,0 +1,29 @@
+.profile__button_action_none{
+    width: 150px;
+    align-self: center;
+    height: 50px;
+    position: relative;
+    background-color: transparent;
+    border: 1px solid white;
+}
+.profile__button_action_none::before{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../../../images/plus_icon.svg);
+    position: absolute;
+    content: '';
+}
+.profile__button_action_none:hover{
+    opacity: 0.6;
+    transition: opacity 1s linear;
+}
+@media screen and (max-width: 999px){
+    .profile__button_action_none{
+        margin-top: 36px;
+        width: 100%;
+    }
+}
