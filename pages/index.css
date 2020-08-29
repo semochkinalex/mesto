@@ -13,7 +13,7 @@
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__button/_action/profile__button_action_none.css);
 @import url(../blocks/gallery/__item/gallery__item.css);
-@import url(../blocks/gallery/__item-subtitle/gallery__item-subtitle.css);
+@import url(../blocks/gallery/__item-title/gallery__item-title.css);
 @import url(../blocks/gallery/__item-image/gallery__item-image.css);
 @import url(../blocks/gallery/gallery.css);
 @import url(../blocks/gallery/__item-description/gallery__item-description.css);
@@ -22,10 +22,9 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__container-title/popup__container-title.css);
+@import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/profile/__part/profile__part.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
-@import url(../blocks/form/__container/form__container.css);
 @import url(../blocks/form/__handler/form__handler.css);
 @import url(../blocks/form/__item/_action/form__item_action_edit-job.css);
 @import url(../blocks/form/__item/form__item.css);

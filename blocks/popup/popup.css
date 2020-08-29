@@ -5,6 +5,7 @@
     position: fixed;
     display: none;
     padding-top: 45px;
+    top: 0;
 }
 .popup__opened{
     display: flex;

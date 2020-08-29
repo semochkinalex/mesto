@@ -7,82 +7,66 @@
     <link rel="stylesheet" type="text/css" href="./pages/index.css">
 </head>
 <body class="page"> <!-- Поработать с классами. Нужно все css файлы, html и javascript. Думаю можно использовать поиск. --> 
-    <section class="popup">
-        <div class="popup__container">  
-            <p class="popup__title">Редактировать профиль</p> <!-- -->
-                <form class="form">
-            <fieldset class="form__container form__container_action_edit-name"> 
-                <input class="form__item form__item_action_edit-name" id="name" type="text" name="name" required>   
-            </fieldset>
-            <fieldset class="form__container form__container_action_edit-job">
-                <input class="form__item form__item_action_edit-job" id="job" type="text" name="job" required>   
-            </fieldset>
-            <fieldset class="form__handler">
-                <input type="submit" class="form__submit-button" value="Сохранить">
-            </fieldset>
-                </form>
-            <button class="popup__close-button"></button>
-        </div>
-    </section>
+    
     <header class="header">
         <img class="header__logo" src="./images/logo.svg" alt="Логотип веб=сайта"> <!-- Починить-->
-        <div class="header__line"></div>
+        <hr class="header__line"></hr>
     </header> <!-- Проверить что имена папок и классов совпадают .-->
     <main>
         <section class="profile">
             <div class="profile__info">
-            <img class="profile__avatar" alt="Аватарка пользователя" src="./images/avatar.jpg"> 
-            <div class="profile__part">
-            <div class="profile__initials">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <p class="profile__job">Исследователь океана</p> 
+                <img class="profile__avatar" alt="Аватарка пользователя" src="./images/avatar.jpg"> 
+                    <div class="profile__part">
+                         <div class="profile__initials">
+                            <h1 class="profile__name">Жак-Ив Кусто</h1>
+                            <p class="profile__job">Исследователь океана</p> 
+                        </div>
+                        <button class="profile__button profile__button_action_edit" type="button" aria-label="Редактировать профиль"></button>
+                    </div>
             </div>
-            <button class="profile__button_action_edit"></button>
-        </div>
-        </div>
-            <button class="profile__button_action_none"></button>
+            <button class="profile__button profile__button_action_none" type="button" aria-label="Кнопка"></button>
         </section>
         <section class="gallery">
             <div class="gallery__item">
                 <img class="gallery__item-image" alt="Фотография" src="./images/kirill-pershin-1088404-unsplash.jpg">
                 <div class="gallery__item-description">
-                <p class="gallery__item-subtitle">Карачевск</p>  
-                <button class="gallery__like-button"></button>
+                <h3 class="gallery__item-title">Карачевск</h3>  
+                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
             </div>
             </div>
             <div class="gallery__item">
                 <img class="gallery__item-image" alt="Фотография" src="./images/kirill-pershin-1404681-unsplash.jpg">
                 <div class="gallery__item-description">
-                <p class="gallery__item-subtitle">Гора Эльбрус</p>  
-                <button class="gallery__like-button"></button>
+                <h3 class="gallery__item-title">Гора Эльбрус</h3>  
+                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
             </div>
             </div>
             <div class="gallery__item">
                 <img class="gallery__item-image" alt="Фотография" src="./images/kirill-pershin-1556355-unsplash.jpg">
                 <div class="gallery__item-description">
-                <p class="gallery__item-subtitle">Карачевск</p>  
-                <button class="gallery__like-button"></button>
+                <h3 class="gallery__item-title">Карачевск</h3>  
+                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
             </div>
             </div>
             <div class="gallery__item">
                 <img class="gallery__item-image" alt="Фотография" src="./images/place-kolsky.jpg">
                 <div class="gallery__item-description">
-                <p class="gallery__item-subtitle">Коса</p>  
-                <button class="gallery__like-button"></button>
+                <h3 class="gallery__item-title">Коса</h3>  
+                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
             </div>
             </div>
             <div class="gallery__item">
                 <img class="gallery__item-image" alt="Фотография" src="./images/place-kosa.jpg">
                 <div class="gallery__item-description">
-                <p class="gallery__item-subtitle">Куршская коса</p>  
-                <button class="gallery__like-button"></button>
+                <h3 class="gallery__item-title">Куршская коса</h3>  
+                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
             </div>
             </div>
             <div class="gallery__item">
                 <img class="gallery__item-image" alt="Фотография" src="./images/place-winter-baikal.jpg">
                 <div class="gallery__item-description">
-                <p class="gallery__item-subtitle">Байкал</p> 
-                <button class="gallery__like-button"></button>
+                <h3 class="gallery__item-title">Байкал</h3> 
+                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
             </div>
             </div>
         </section>
@@ -90,6 +74,17 @@
     <footer class="footer">
         <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
     </footer>
+    <section class="popup">
+        <div class="popup__container">  
+            <p class="popup__title">Редактировать профиль</p> <!-- -->
+                <form class="form">
+                <input class="form__item form__item_action_edit-name" id="name" type="text" name="name" placeholder="Иия" required>   
+                <input class="form__item form__item_action_edit-job" id="job" type="text" name="job" required placeholder="Работа">   
+                <button type="submit" class="form__submit-button" aria-label="Отправить форму">Сохранить</button> "
+                </form>
+            <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+        </div>
+    </section>
     <script src="./index.js"></script>
 </body>
 </html> 

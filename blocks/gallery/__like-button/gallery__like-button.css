@@ -6,3 +6,6 @@
     border: none;
     background-image: url('../../../images/heart_icon.svg');
 }
+.gallery__like-button:hover{
+    cursor: pointer;
+}

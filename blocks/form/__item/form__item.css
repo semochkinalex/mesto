@@ -1,5 +1,9 @@
 .form__item{
     border: 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 0;
 }
 .form__item:focus{
     outline: none;
@@ -12,3 +16,10 @@
     line-height: 17px;
     color: #000000;
 }
+ /* .form__container{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+} */

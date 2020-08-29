@@ -6,14 +6,15 @@ let userJob = document.querySelector('.profile__job');
 
 let nameInput = document.querySelector('.form__item_action_edit-name');
 let jobInput = document.querySelector('.form__item_action_edit-job');
-nameInput.setAttribute('placeholder', userName.textContent);
-jobInput.setAttribute('placeholder', userJob.textContent);
+nameInput.value = userName.textContent;
+jobInput.value = userJob.textContent; 
 function closePopup(){
     popup.classList.remove('popup__opened');
 }
 function openPopup(){
     popup.classList.add('popup__opened');
 }
+
 closeButton.addEventListener('click', closePopup); // Две фунцции, которые говорят за открытие и закрытие.
 editButton.addEventListener('click', openPopup);
 
@@ -26,19 +27,16 @@ function formSubmitHandler (evt) {
                         // Так мы можем определить свою логику отправки.
                         // О том, как это делать, расскажем позже.
 
-    // Находим поля формы в DOM
-    let nameInput = document.querySelector('.form__item_action_edit-name');
-    let jobInput = document.querySelector('.form__item_action_edit-job');
-    // Получите значение полей из свойства value
-    nameInput = nameInput.value;
-    jobInput = jobInput.value;
-    // Вставьте новые значения с помощью textContent
-    userName.textContent = nameInput;
-    userJob.textContent = jobInput;
 
+
+    // Получите значение полей из свойства value
+    // Вставьте новые значения с помощью textContent
+    userName.textContent = nameInput.value;
+    userJob.textContent = jobInput.value;
+    closePopup();
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
+
 formElement.addEventListener('submit', formSubmitHandler);
-formElement.addEventListener('submit', closePopup);

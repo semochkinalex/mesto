@@ -21,6 +21,7 @@
 .profile__button_action_edit:hover{
     opacity: 0.6;
     transition: opacity 1s linear;
+    cursor: pointer;
 }
 .profile__button_action_edit:focus{
     outline: none;

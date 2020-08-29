@@ -19,6 +19,7 @@
 }
 .profile__button_action_none:hover{
     opacity: 0.6;
+    cursor: pointer;
     transition: opacity 1s linear;
 }
 @media screen and (max-width: 999px){
