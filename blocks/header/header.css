@@ -5,9 +5,7 @@
     margin-right: auto;
     padding-top: 45px; /* Чтобы попап занимал весь экран. С margin появляеться баг */
     height: 74px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    border-bottom: 1px solid rgba(84, 84, 84, .7); /*Такой же цвет, только в rgba, чтобы добавить прозрачность*/
 }
 @media screen and (max-width:  999px){
     .header{
