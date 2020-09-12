@@ -5,6 +5,8 @@
     background-color: transparent;
     border: none;
     background-image: url('../../../images/heart_icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .gallery__like-button:hover{
     cursor: pointer;
