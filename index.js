@@ -48,14 +48,11 @@ function renderCard(titleValue, imageValue){
     const cardPic = cardElement.querySelector('.gallery__item-image');
     cardPic.setAttribute("src", imageValue);
     cardPic.addEventListener('click', () => {
-                const zoomTempl = document.querySelector('#zoom-template').content;
-        const zoomElmnt = zoomTempl.cloneNode(true); 
-        zoom.classList.toggle('popup__opened');
-        const zoomTitle = zoomElmnt.querySelector('.zoom__title');
-        const zoomImg = zoomElmnt.querySelector('.zoom__image');
-        zoomTitle.textContent = title;
-        zoomImg.setAttribute('src', imageValue);
-        zoomContainer.prepend(zoomElmnt);
+            zoom.classList.toggle('popup__opened');
+            const zoomTitle = document.querySelector('.zoom__title');
+            zoomTitle.textContent = title;
+            const zoomImg = document.querySelector('.zoom__image');
+            zoomImg.setAttribute('src', imageValue);
     })
     const deleteButton = cardElement.querySelector('.gallery__delete-button');
 

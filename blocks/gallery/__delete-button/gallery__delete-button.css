@@ -8,6 +8,8 @@
     height: 19.3px;
     background-color: transparent;
     border: 0;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .gallery__delete-button:hover{
     cursor: pointer;
