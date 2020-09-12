@@ -9,3 +9,7 @@
 .gallery__like-button:hover{
     cursor: pointer;
 }
+.gallery__like-button:focus{ 
+    border: 0;
+    outline: 0;
+}

@@ -1,0 +1,11 @@
+.zoom__image{
+    max-width: 100%;
+    height: auto;
+    max-height: 80vh;
+    background-repeat: no-repeat;
+    z-index: 100;
+        background-size: contain;
+     margin-right: auto;
+        margin-left: auto;
+    background-position: left;
+}

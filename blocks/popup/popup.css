@@ -4,11 +4,9 @@
     background-color: rgba(0,0,0,0.5);
     position: fixed;
     display: none;
-    padding-top: 45px;
     top: 0;
+    z-index: 4;
 }
-.popup__opened{
-    display: flex;
-}
+
 
 /* Сделать так, чтобы не было верхнего отступа*/

@@ -1,0 +1,9 @@
+.zoom__container{
+    max-height: 80vh;
+    margin: auto;   
+    display: flex;
+    position: relative;
+    z-index: 100;
+    flex-direction: column;
+    justify-content: flex-start;
+}

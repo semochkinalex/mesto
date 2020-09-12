@@ -23,51 +23,19 @@
                         <button class="profile__button profile__button_action_edit" type="button" aria-label="Редактировать профиль"></button>
                     </div>
             </div>
-            <button class="profile__button profile__button_action_none" type="button" aria-label="Кнопка"></button>
+            <button class="profile__button profile__button_action_add" type="button" aria-label="Кнопка"></button>
         </section>
         <section class="gallery">
-            <div class="gallery__item"> <!-- Потом сделаю ul :) -->
+            <template id="card-template">
+                <div class="gallery__item">
+                    <button class="gallery__delete-button" aria-label="Удалить карточку"></button> 
                 <img class="gallery__item-image" alt="Фотография" src="./images/kirill-pershin-1088404-unsplash.jpg">
                 <div class="gallery__item-description">
                 <h2 class="gallery__item-title">Карачевск</h2>  
                 <button class="gallery__like-button" aria-label="Поставить лайк"></button>
             </div>
-            </div>
-            <div class="gallery__item">
-                <img class="gallery__item-image" alt="Фотография" src="./images/kirill-pershin-1404681-unsplash.jpg">
-                <div class="gallery__item-description">
-                <h2 class="gallery__item-title">Гора Эльбрус</h2>  
-                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
-            </div>
-            </div>
-            <div class="gallery__item">
-                <img class="gallery__item-image" alt="Фотография" src="./images/kirill-pershin-1556355-unsplash.jpg">
-                <div class="gallery__item-description">
-                <h2 class="gallery__item-title">Карачевск</h2>  
-                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
-            </div>
-            </div>
-            <div class="gallery__item">
-                <img class="gallery__item-image" alt="Фотография" src="./images/place-kolsky.jpg">
-                <div class="gallery__item-description">
-                <h2 class="gallery__item-title">Коса</h2>  
-                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
-            </div>
-            </div>
-            <div class="gallery__item">
-                <img class="gallery__item-image" alt="Фотография" src="./images/place-kosa.jpg">
-                <div class="gallery__item-description">
-                <h2 class="gallery__item-title">Куршская коса</h2>  
-                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
-            </div>
-            </div>
-            <div class="gallery__item">
-                <img class="gallery__item-image" alt="Фотография" src="./images/place-winter-baikal.jpg">
-                <div class="gallery__item-description">
-                <h2 class="gallery__item-title">Байкал</h2> 
-                <button class="gallery__like-button" aria-label="Поставить лайк"></button>
-            </div>
-            </div>
+        </div>
+           </template>
         </section>
     </main>
     <footer class="footer">
@@ -84,6 +52,28 @@
             <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
         </div>
     </section>
+    <section class="popup">
+        <div class="popup__container">  
+            <p class="popup__title">Добавить карточку</p>
+                <form class="form form__card">
+                <input class="form__item form__item_action_edit-title" id="name" type="text" name="name" placeholder="Название" required>   
+                <input class="form__item form__item_action_edit-link" id="job" type="text" name="job" required placeholder="Ссылка на картинку">   
+                <button type="submit" class="form__submit-button" aria-label="Отправить форму">Сохранить</button> "
+                </form>
+            <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+        </div>
+    </section>
+    <section class="popup zoom">
+        <div class="zoom__container">
+            <button class="popup__close-button zoom__close-button" type="button" aria-label="Закрыть форму"></button>       
+            <template id="zoom-template">
+            <img class="zoom__image" alt="Приближённая фотография">
+            <h2 class="zoom__title"></h2>
+        </template>
+    </div>
+    </section>
     <script src="./index.js"></script>
 </body>
 </html> 
+
+ <!-- Проверить классы, сделать их получше. Сделать рефактор кода --> 
