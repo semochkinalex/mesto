@@ -2,9 +2,3 @@
     right: -30px;
     top: -40px;
 }
-@media screen and (max-width: 900px){
-    .zoom__close-button{
-        right: 10px;
-        top: -40px;
-    }
-} 

@@ -1,17 +1,17 @@
-let closeButton = document.querySelectorAll('.popup__close-button');
-let popup = document.querySelectorAll('.popup');
-let addButton = document.querySelector('.profile__button_action_add');
-let editButton = document.querySelector('.profile__button_action_edit');
-let userName = document.querySelector('.profile__name');
-let userJob = document.querySelector('.profile__job');
-let titleName = document.querySelector('.form__item_action_edit-title');
-let linkName = document.querySelector('.form__item_action_edit-link');
+const closeButton = document.querySelectorAll('.popup__close-button');
+const popup = document.querySelectorAll('.popup');
+const addButton = document.querySelector('.profile__button_action_add');
+const editButton = document.querySelector('.profile__button_action_edit');
+const userName = document.querySelector('.profile__name');
+const userJob = document.querySelector('.profile__job');
+const titleName = document.querySelector('.form__item_action_edit-title');
+const linkName = document.querySelector('.form__item_action_edit-link');
 const zoom = document.querySelector('.zoom');
-let zoomContainer = document.querySelector('.zoom__container');
+const zoomContainer = document.querySelector('.zoom__container');
 const zoomCloseButton = document.querySelector('.zoom__close-button');
 
 // Карточки
-let gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery');
 const cardTemplate = gallery.querySelector('#card-template').content;
 const initialCards = [
     {
@@ -45,7 +45,7 @@ render();
 function renderCard(titleValue, imageValue){
     const cardElement = cardTemplate.cloneNode(true);
     const title = cardElement.querySelector('.gallery__item-title').textContent = titleValue;
-    const cardPic = cardElement.querySelector('.gallery__item-image')
+    const cardPic = cardElement.querySelector('.gallery__item-image');
     cardPic.setAttribute("src", imageValue);
     cardPic.addEventListener('click', () => {
                 const zoomTempl = document.querySelector('#zoom-template').content;
@@ -105,7 +105,7 @@ function openPopup(){
 editButton.addEventListener('click', openPopup);
 
 // Находим форму в DOM
-let formElement = document.querySelector('.form');
+const formElement = document.querySelector('.form');
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler (evt) {
@@ -122,7 +122,7 @@ function formSubmitHandler (evt) {
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
 
-let cardHandler = document.querySelector('.form__card');
+const cardHandler = document.querySelector('.form__card');
 function cardSubmitHandler (evt) {
     evt.preventDefault();
     renderCard(titleName.value, linkName.value); 

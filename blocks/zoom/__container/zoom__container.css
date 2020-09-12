@@ -1,5 +1,6 @@
 .zoom__container{
-    max-height: 80vh;
+    max-height: 75vh;
+    max-width: 75vw;
     margin: auto;   
     display: flex;
     position: relative;
