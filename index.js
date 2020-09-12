@@ -40,7 +40,9 @@ const initialCards = [
     }
 ];
 
-render();
+initialCards.forEach(item => {
+    renderCard(item.name, item.link);
+})
 
 function renderCard(titleValue, imageValue){
     const cardElement = cardTemplate.cloneNode(true);
@@ -68,15 +70,6 @@ function renderCard(titleValue, imageValue){
  //   cardElement.querySelectorAll('gallery__like-button').forEach((btn) => {
     //    btn.addEventListener('click', alert('hello'));
    //  }) // Нужно добавить систему индексов !!! 
-
-function render(){
- 
-    initialCards.forEach(item => {
-        renderCard(item.name, item.link);
-    })
-    
-}
-
 let nameInput = document.querySelector('.form__item_action_edit-name');
 let jobInput = document.querySelector('.form__item_action_edit-job');
 nameInput.value = userName.textContent;
@@ -88,18 +81,16 @@ function closePopup(){
         
     })
 }
-function openPopup(){
-    popup[0].classList.add('popup__opened');
-}
-
  // closeButton.addEventListener('click', closePopup); // Две фунцции, которые говорят за открытие и закрытие.
  closeButton.forEach((evt) => {
      evt.addEventListener('click', closePopup);
  })
- addButton.addEventListener('click', (evt) => {
+ addButton.addEventListener('click', () => {
      popup[1].classList.add('popup__opened');
  })
-editButton.addEventListener('click', openPopup);
+editButton.addEventListener('click', () => {
+    popup[0].classList.add('popup__opened');
+});
 
 // Находим форму в DOM
 const formElement = document.querySelector('.form');

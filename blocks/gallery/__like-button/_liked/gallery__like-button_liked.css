@@ -1,6 +1,4 @@
 .gallery__like-button_liked{
     background-image: url(../../../../images/liked.svg);
     transition: background-image 1s linear;
-    background-repeat: no-repeat;
-    background-position: center;
 }
