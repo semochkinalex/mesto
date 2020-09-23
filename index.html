@@ -43,10 +43,12 @@
     <section class="popup popup__edit">
         <div class="popup__container">  
             <p class="popup__title">Редактировать профиль</p>
-                <form class="form">
-                <input class="form__item form__item_action_edit-name" id="name" type="text" name="name" placeholder="Иия" required>   
-                <input class="form__item form__item_action_edit-job" id="job" type="text" name="job" required placeholder="Работа">   
-                <button type="submit" class="form__submit-button" aria-label="Отправить форму">Сохранить</button> "
+                <form class="form" novalidate>
+                <input class="form__item form__item_action_edit-name" id="name" type="text" name="name" placeholder="Иия" required minlength="2" maxlength="40" id="name">   
+                <span class="form__input-error" id="name-error"></span> 
+                <input class="form__item form__item_action_edit-job" id="job" type="text" name="job" required placeholder="Работа" minlength="2" maxlength="200" id="info">   
+                <span class="form__input-error" id="info-error"></span> 
+                <button type="submit" class="form__submit-button" aria-label="Отправить форму">Сохранить</button> 
                 </form>
             <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
         </div>
@@ -54,9 +56,11 @@
     <section class="popup popup__card">
         <div class="popup__container">  
             <p class="popup__title">Добавить карточку</p>
-                <form class="form form__card">
-                <input class="form__item form__item_action_edit-title" id="card-title" type="text" name="card-title" placeholder="Название" required>   
-                <input class="form__item form__item_action_edit-link" id="img-link" type="text" name="img-link" required placeholder="Ссылка на картинку">   
+                <form class="form form__card" novalidate>
+                <input class="form__item form__item_action_edit-title" id="card-title" type="text" name="card-title" placeholder="Название" required minlength="2" maxlength="30" id="card-title">   
+                <span class="form__input-error" id="card-title-error"></span> 
+                <input class="form__item form__item_action_edit-link" id="img-link" type="url" name="img-link" required placeholder="Ссылка на картинку" id="card-link">   
+                <span class="form__input-error" id="card-link-error"></span> 
                 <button type="submit" class="form__submit-button" aria-label="Отправить форму">Сохранить</button> "
                 </form>
             <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>

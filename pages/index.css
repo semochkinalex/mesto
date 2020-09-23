@@ -38,3 +38,5 @@
 @import url(../blocks/zoom/__image/zoom__image.css);
 @import url(../blocks/zoom/__title/zoom__title.css);
 @import url(../blocks/zoom/__body/zoom__body.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/form/__item/_validated/form__item_validated_false.css);
