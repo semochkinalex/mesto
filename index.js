@@ -46,7 +46,6 @@ const initialCards = [
 initialCards.forEach(item => {
     renderCard(item.name, item.link);
 })
-
 function renderCard(titleValue, imageValue){
     const cardElement = cardTemplate.cloneNode(true);
     const title = cardElement.querySelector('.gallery__item-title').textContent = titleValue;
@@ -79,16 +78,13 @@ popups.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
         evt.target.classList.remove("popup__opened");
     })
+});
+document.addEventListener('keydown', (evt) => {
+    if(evt.key === 'Escape') {
+    popups.forEach((popup) => {
+        popup.classList.remove('popup__opened')
+    })}
 })
-popups.forEach((popup) => {
-    popup.addEventListener('keypress', (evt) => {
-        if(evt.key === "Escape" || evt.key === "Esc"){
-            closePopup();
-        }
-    })
-})
-
-
 
 // popupAdd.addEventListener('click', (evt) => {
 //     evt.currentTarget.classList.remove("popup__opened")

@@ -19,7 +19,8 @@ const setEventListeners = (formElement) => {
         });
     });
     buttonState(inputList, buttonElement);
-};const hasInvalidInput = (inputList) => {
+};
+const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => !inputElement.validity.valid);
   };
 const buttonState = (inputList, buttonElement) => {
@@ -68,13 +69,6 @@ const enableValidation = (formSelector, inputSelector, submitButtonSelector, ina
     setEventListeners(formSelector)
 }
 // Сдлеать кнопку, разобраться с  обьектом.
+// enableValidation({formSelector: '.popup'});
 enableValidation(popupEdit);
 enableValidation(popupAdd);
-// enableValidation({
-//     formSelector: '.popup',
-//     inputSelector: '.popup__input',
-//     submitButtonSelector: '.popup__button',
-//     inactiveButtonClass: 'popup__button_disabled', // Свои классы написать
-//     inputErrorClass: 'popup__input_type_error',
-//     errorClass: 'popup__error_visible'
-//   }); 

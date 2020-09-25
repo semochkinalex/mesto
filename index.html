@@ -38,15 +38,15 @@
         </section>
     </main>
     <footer class="footer">
-        <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+        <p class="footer__copyright">&#169; 2020 Mesto Russia</p>   
     </footer>
     <section class="popup popup__edit">
         <div class="popup__container">  
             <p class="popup__title">Редактировать профиль</p>
-                <form class="form" novalidate>
-                <input class="form__item form__item_action_edit-name" id="name" type="text" name="name" placeholder="Иия" required minlength="2" maxlength="40" id="name">   
+                <form class="form" novalidate> 
+                <input autocomplete="off" class="form__item form__item_action_edit-name" id="name" type="text" name="name" placeholder="Иия" required minlength="2" maxlength="40" id="name">   
                 <span class="form__input-error" id="name-error"></span> 
-                <input class="form__item form__item_action_edit-job"  type="text" name="job" required placeholder="Работа" minlength="2" maxlength="200" id="info">   
+                <input autocomplete="off" class="form__item form__item_action_edit-job"  type="text" name="job" required placeholder="Работа" minlength="2" maxlength="200" id="info">   
                 <span class="form__input-error" id="info-error"></span> 
                 <button type="submit" class="form__submit-button" aria-label="Отправить форму">Сохранить</button> 
                 </form>
@@ -57,9 +57,9 @@
         <div class="popup__container">  
             <p class="popup__title">Добавить карточку</p>
                 <form class="form form__card" novalidate>
-                <input class="form__item form__item_action_edit-title" id="card-title" type="text" name="card-title" placeholder="Название" required minlength="2" maxlength="30" id="card-title">   
+                <input autocomplete="off" class="form__item form__item_action_edit-title" id="card-title" type="text" name="card-title" placeholder="Название" required minlength="2" maxlength="30" id="card-title">   
                 <span class="form__input-error" id="card-title-error"></span> 
-                <input class="form__item form__item_action_edit-link" type="url" name="img-link" required placeholder="Ссылка на картинку" id="card">   
+                <input autocomplete="off" class="form__item form__item_action_edit-link" type="url" name="img-link" required placeholder="Ссылка на картинку" id="card">   
                 <span class="form__input-error" id="card-error"></span> 
                 <button type="submit" class="form__submit-button " aria-label="Отправить форму">Сохранить</button>
                 </form>
