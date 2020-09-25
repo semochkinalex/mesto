@@ -17,6 +17,14 @@
     line-height: 17px;
     color: #000000;
 }
+.abc{
+    opacity: 0.2;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    background: none;
+    color: black;
+}
+
  /* .form__container{
     margin: 0;
     padding: 0;

@@ -13,7 +13,6 @@ const nameInput = document.querySelector('.form__item_action_edit-name');
 const jobInput = document.querySelector('.form__item_action_edit-job');
 const popupEdit = document.querySelector('.popup__edit');
 const popupAdd = document.querySelector('.popup__card')
-
 // Карточки
 const gallery = document.querySelector('.gallery');
 const cardTemplate = gallery.querySelector('#card-template').content;
@@ -73,7 +72,27 @@ function renderCard(titleValue, imageValue){
     })
     gallery.prepend(cardElement);  
 }
+// popupAdd.addEventListener('click', (evt) => {
+//     evt.currentTarget.classList.remove("popup__opened")
+// });
+popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        evt.target.classList.remove("popup__opened");
+    })
+})
+popups.forEach((popup) => {
+    popup.addEventListener('keypress', (evt) => {
+        if(evt.key === "Escape" || evt.key === "Esc"){
+            closePopup();
+        }
+    })
+})
 
+
+
+// popupAdd.addEventListener('click', (evt) => {
+//     evt.currentTarget.classList.remove("popup__opened")
+// });
 nameInput.value = userName.textContent;
 jobInput.value = userJob.textContent; 
 function closePopup(){
@@ -97,11 +116,7 @@ const formElement = document.querySelector('.form');
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                        // Так мы можем определить свою логику отправки.
-                        // О том, как это делать, расскажем позже.
-    // Получите значение полей из свойства value
-    // Вставьте новые значения с помощью textContent
+
     userName.textContent = nameInput.value;
     userJob.textContent = jobInput.value;
     closePopup();
@@ -111,8 +126,7 @@ function formSubmitHandler (evt) {
 formElement.addEventListener('submit', formSubmitHandler);
 
 const cardForm = document.querySelector('.form__card');
-function cardSubmitHandler (evt) {
-    evt.preventDefault();
+function cardSubmitHandler () {
     renderCard(titleName.value, linkName.value); 
     titleName.value = '';
     linkName.value = '';

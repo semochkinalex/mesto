@@ -1,0 +1,10 @@
+.form__submit-button_disabled_true{
+    opacity: 0.2;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    background: none;
+    color: black;
+}
+.form__submit-button_disabled_true:hover{
+    background: none;
+}
