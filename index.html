@@ -19,10 +19,10 @@
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
                             <p class="profile__job">Исследователь океана</p> 
                         </div>
-                        <button class="profile__button profile__button_action_edit" type="button" aria-label="Редактировать профиль"></button>
+                        <button class="profile__button popup__open profile__button_action_edit" id="popupEdit" type="button" aria-label="Редактировать профиль"></button>
                     </div>
             </div>
-            <button class="profile__button profile__button_action_add" type="button" aria-label="Кнопка"></button>
+            <button class="profile__button popup__open profile__button_action_add" id="popupAdd" type="button" aria-label="Кнопка"></button>
         </section>
         <section class="gallery">
             <template id="card-template">
@@ -44,7 +44,7 @@
         <div class="popup__container">  
             <p class="popup__title">Редактировать профиль</p>
                 <form class="form" novalidate> 
-                <input autocomplete="off" class="form__item form__item_action_edit-name" id="name" type="text" name="name" placeholder="Иия" required minlength="2" maxlength="40" id="name">   
+                <input autocomplete="off" class="form__item form__item_action_edit-name" type="text" name="name" placeholder="Иия" required minlength="2" maxlength="40" id="name">   
                 <span class="form__input-error" id="name-error"></span> 
                 <input autocomplete="off" class="form__item form__item_action_edit-job"  type="text" name="job" required placeholder="Работа" minlength="2" maxlength="200" id="info">   
                 <span class="form__input-error" id="info-error"></span> 
@@ -57,13 +57,13 @@
         <div class="popup__container">  
             <p class="popup__title">Добавить карточку</p>
                 <form class="form form__card" novalidate>
-                <input autocomplete="off" class="form__item form__item_action_edit-title" id="card-title" type="text" name="card-title" placeholder="Название" required minlength="2" maxlength="30" id="card-title">   
+                <input autocomplete="off" class="form__item form__item_action_edit-title" type="text" name="card-title" placeholder="Название" required minlength="2" maxlength="30" id="card-title">   
                 <span class="form__input-error" id="card-title-error"></span> 
                 <input autocomplete="off" class="form__item form__item_action_edit-link" type="url" name="img-link" required placeholder="Ссылка на картинку" id="card">   
                 <span class="form__input-error" id="card-error"></span> 
-                <button type="submit" class="form__submit-button " aria-label="Отправить форму">Сохранить</button>
+                <button type="submit" class="form__submit-button" id="card-submit" aria-label="Отправить форму">Сохранить</button>
                 </form>
-            <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+            <button class="popup__close-button " type="button" aria-label="Закрыть форму"></button>
         </div>
     </section>
     <section class="popup zoom">
@@ -73,7 +73,8 @@
                     <h2 class="zoom__title">Картинка</h2>
          </div>
     </section>
-    <script src="./index.js" defer></script>
-    <script src="./validate.js" defer></script>
+    <script src='./scripts/cards.js' defer></script>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
 </body>
 </html> 
