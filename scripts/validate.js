@@ -27,9 +27,11 @@ const setEventListeners = (formElement, inputSelector, buttonSelector, inactiveB
         });
     });
 };
+
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => !inputElement.validity.valid);
   };
+
 const handleButtonState = (inputList, buttonElement, inactiveButtonSelector) => {
     if(hasInvalidInput(inputList)){
         makeButtonInactive(buttonElement, inactiveButtonSelector);
@@ -37,11 +39,17 @@ const handleButtonState = (inputList, buttonElement, inactiveButtonSelector) => 
         makeButtonActive(buttonElement, inactiveButtonSelector);
     }
 }
+
 const makeButtonActive = (buttonElement, inactiveButtonSelector) => {
     buttonElement.classList.remove(`${inactiveButtonSelector}`);
-
     buttonElement.removeAttribute('disabled', true);
 }
+
+const makeButtonInactive = (buttonElement) => {
+    buttonElement.classList.add("form__submit-button_disabled_true");
+    buttonElement.setAttribute('disabled', true);
+}
+
 const checkInputValidity = (formElement, inputElement, inputErrorSelector, errorSelector) => {
     const isInputNotValid = !inputElement.validity.valid;
     if(isInputNotValid){
