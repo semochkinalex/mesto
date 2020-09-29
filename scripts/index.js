@@ -16,6 +16,7 @@ const zoomImg = document.querySelector('.zoom__image');
 const formElement = document.querySelector('.form');
 const cardForm = document.querySelector('.form__card');
 const cardSubmit = document.querySelector('#card-submit');
+let popupOpened = document.querySelector('.popup__opened');
 // Карточки
 const gallery = document.querySelector('.gallery');
 const cardTemplate = gallery.querySelector('#card-template').content;
