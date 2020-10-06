@@ -1,5 +1,6 @@
 // import {initialCards} from './cards.js';
-import {Card} from './card.js'; 
+import {Card} from './card.js';
+import {validate} from './validate.js'; 
 export {gallery, zoomImg, zoomTitle, zoom, closePopup, openPopup, closeEsc, cardSubmit, handleZoom};
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const popups = document.querySelectorAll('.popup');
@@ -88,7 +89,7 @@ function submitCardHandler () {
     titleName.value = '';
     linkName.value = '';
     closePopup();
-    makeButtonInactive(cardSubmit); // Разобраться
+    validate._makeButtonInactive(cardSubmit); // Разобраться
 }
 
 cardForm.addEventListener('submit', submitCardHandler);

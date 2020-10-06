@@ -1,3 +1,4 @@
+export {validate};
 const selectors = {
     formSelector: '.form',
     inputSelector: '.form__item',
