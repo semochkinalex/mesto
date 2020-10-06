@@ -1,3 +1,6 @@
+// import {initialCards} from './cards.js';
+import {Card} from './card.js'; 
+export {gallery, zoomImg, zoomTitle, zoom, closePopup, openPopup, closeEsc, cardSubmit, handleZoom};
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const popups = document.querySelectorAll('.popup');
 const addButton = document.querySelector('.profile__button_action_add');
@@ -19,13 +22,7 @@ const cardSubmit = document.querySelector('#card-submit');
 let popupOpened = document.querySelector('.popup__opened');
 // Карточки
 const gallery = document.querySelector('.gallery');
-const cardTemplate = gallery.querySelector('#card-template').content;
-
-
-initialCards.forEach(item => {
-    const cardElement = renderCard(item.name, item.link);
-    gallery.prepend(cardElement);
-})
+// const cardTemplate = gallery.querySelector('#card-template').content;
 
 function handleZoom (titleValue, imageValue) {
     openPopup(zoom);
@@ -34,35 +31,6 @@ function handleZoom (titleValue, imageValue) {
     zoomImg.alt = titleValue; 
 }
 
-function deleteParent (button) {
-    button.parentElement.remove();
-}
-
-function like (button) {
-    button.classList.toggle('gallery__like-button_liked');
-}
-
-function renderCard(titleValue, imageValue){ 
-    const cardElement = cardTemplate.cloneNode(true); 
-    cardElement.querySelector('.gallery__item-title').textContent = titleValue; 
-    const cardPic = cardElement.querySelector('.gallery__item-image'); 
-    cardPic.alt = titleValue; 
-    cardPic.src = imageValue; 
-
-    cardPic.addEventListener('click', () => { 
-            handleZoom(titleValue, imageValue);
-    }) 
-    const deleteButton = cardElement.querySelector('.gallery__delete-button');
-
-    deleteButton.addEventListener('click', () => {
-        deleteParent(deleteButton);
-    })
-    const likeButton = cardElement.querySelector('.gallery__like-button');
-    likeButton.addEventListener('click', () => {
-        like(likeButton);
-    });
-    return cardElement;
-}
 
 popups.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
@@ -110,12 +78,17 @@ function submitFormHandler (evt) {
 formElement.addEventListener('submit', submitFormHandler);
 
 function submitCardHandler () {
-    const cardElement = renderCard(titleName.value, linkName.value);
-    gallery.prepend(cardElement); 
+    const data = {
+    name : titleName.value,
+    link : linkName.value,
+    }
+    const card = new Card(data, '#card-template');
+    const cardElement = card.renderCard();
+    gallery.prepend(cardElement);
     titleName.value = '';
     linkName.value = '';
     closePopup();
-    makeButtonInactive(cardSubmit);
+    makeButtonInactive(cardSubmit); // Разобраться
 }
 
 cardForm.addEventListener('submit', submitCardHandler);

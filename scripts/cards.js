@@ -1,3 +1,4 @@
+export {initialCards}
 const initialCards = [
     {
         name: 'Архыз',
