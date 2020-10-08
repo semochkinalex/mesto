@@ -1,10 +1,6 @@
 import {gallery, zoomImg, zoomTitle, zoom, openPopup, handleZoom} from './index.js';
 import {initialCards} from './cards.js';
 export {Card};
-// const test =  {
-//     name: 'Архыз',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-// }
 class Card {
     constructor(data, cardSelector){
         this._title = data.name;
@@ -17,14 +13,13 @@ class Card {
         .querySelector(this._cardSelector)
         .content
         .cloneNode(true);
-      return cardElement;
+        return cardElement;
     }
     renderCard () {
         this._element = this._getTemplate();
         this._setEventListeners();
         this._element.querySelector('.gallery__item-title').textContent = this._title;
         this._element.querySelector('.gallery__item-image').src = this._image;
-
         return this._element;
     }
     _setEventListeners () {
@@ -32,11 +27,9 @@ class Card {
         const deleteButton = this._element.querySelector('.gallery__delete-button');
         const likeButton = this._element.querySelector('.gallery__like-button');
         const cardPic = this._element.querySelector('.gallery__item-image');
-        // const zoomCloseButton = zoom.querySelector('.zoom__close-button');
         this._deleteCard(deleteButton);
         this._like(likeButton);
         this._openZoom(cardPic);
-        // this._closeZoom(zoomCloseButton);
     }
     _deleteCard (button) {
         button.addEventListener('click', () => {
@@ -53,13 +46,7 @@ class Card {
             handleZoom(this._title, this._image);
         })
     }
-    // _closeZoom (button) {
-    //     button.addEventListener('click', () => {
-    //         zoom.classList.remove('popup__opened');
-    //     })
-    // }
 }
-// const exp = new Card(test, '#card-template');
 initialCards.forEach((item) => {
     const card = new Card(item, '#card-template');
     const cardElement = card.renderCard();

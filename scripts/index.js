@@ -1,7 +1,6 @@
-// import {initialCards} from './cards.js';
-import {Card} from './card.js';
-import {validate} from './validate.js'; 
-export {gallery, zoomImg, zoomTitle, zoom, closePopup, openPopup, closeEsc, cardSubmit, handleZoom};
+import {Card} from './card.js'; 
+export {gallery, zoomImg, zoomTitle, zoom, closePopup, openPopup, closeEsc, cardSubmit, handleZoom, popups, popupEdit, popupAdd, forms};
+const forms = document.querySelectorAll('.form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const popups = document.querySelectorAll('.popup');
 const addButton = document.querySelector('.profile__button_action_add');
@@ -21,9 +20,7 @@ const formElement = document.querySelector('.form');
 const cardForm = document.querySelector('.form__card');
 const cardSubmit = document.querySelector('#card-submit');
 let popupOpened = document.querySelector('.popup__opened');
-// Карточки
 const gallery = document.querySelector('.gallery');
-// const cardTemplate = gallery.querySelector('#card-template').content;
 
 function handleZoom (titleValue, imageValue) {
     openPopup(zoom);
@@ -44,7 +41,7 @@ function closePopup(){
     document.removeEventListener('keydown', closeEsc);
 }
 
- closeButtons.forEach((button) => {
+closeButtons.forEach((button) => {
      button.addEventListener('click', closePopup);
 })
 
@@ -89,7 +86,7 @@ function submitCardHandler () {
     titleName.value = '';
     linkName.value = '';
     closePopup();
-    validate._makeButtonInactive(cardSubmit); // Разобраться
+    validate._makeButtonInactive(cardSubmit);
 }
 
 cardForm.addEventListener('submit', submitCardHandler);
