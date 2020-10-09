@@ -1,4 +1,4 @@
-import {gallery, handleZoom} from './index.js';
+import {gallery, openPopup, zoom, zoomTitle, zoomImg} from './index.js';
 import {initialCards} from './cards.js';
 export {Card};
 class Card {
@@ -43,9 +43,16 @@ class Card {
     }
     _openZoom (button) {
         button.addEventListener('click', () => {
-            handleZoom(this._title, this._image);
+            this._handleZoom();
         })
     }
+    _handleZoom () {
+        openPopup(zoom);
+        zoomTitle.textContent = this._title; 
+        zoomImg.setAttribute('src', this._image); 
+        zoomImg.alt = this._title; 
+    }
+    
 }
 initialCards.forEach((item) => {
     const card = new Card(item, '#card-template');

@@ -1,5 +1,5 @@
 import {Card} from './card.js'; 
-export {gallery, zoom, handleZoom, forms};
+export {gallery, zoom, forms, zoomImg, zoomTitle, openPopup};
 const forms = document.querySelectorAll('.form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const popups = document.querySelectorAll('.popup');
