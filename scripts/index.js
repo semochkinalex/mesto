@@ -18,7 +18,6 @@ const zoomTitle = document.querySelector('.zoom__title');
 const zoomImg = document.querySelector('.zoom__image'); 
 const formElement = document.querySelector('.form');
 const cardForm = document.querySelector('.form__card');
-const cardSubmit = document.querySelector('#card-submit');
 let popupOpened = document.querySelector('.popup__opened');
 const gallery = document.querySelector('.gallery');
 
@@ -28,7 +27,6 @@ function handleZoom (titleValue, imageValue) {
     zoomImg.setAttribute('src', imageValue); 
     zoomImg.alt = titleValue; 
 }
-
 
 popups.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
