@@ -1,5 +1,5 @@
 import {Card} from './card.js'; 
-export {gallery, zoomImg, zoomTitle, zoom, openPopup, closeEsc, handleZoom, forms};
+export {gallery, zoomImg, zoomTitle, zoom, openPopup, closeEsc, handleZoom, forms, popupAdd};
 const forms = document.querySelectorAll('.form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const popups = document.querySelectorAll('.popup');
@@ -86,8 +86,6 @@ function submitCardHandler () {
     titleName.value = '';
     linkName.value = '';
     closePopup();
-    const validate = new FormValidator(selectors, popupAdd)
-    validate._makeButtonInactive(cardSubmit);
 }
 
 cardForm.addEventListener('submit', submitCardHandler);

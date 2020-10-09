@@ -1,4 +1,4 @@
-import {forms} from './index.js';
+import {forms, popupAdd} from './index.js';
 const selectors = {
     inputSelector: '.form__item',
     submitButtonSelector: '.form__submit-button',
@@ -80,4 +80,7 @@ class FormValidator {
 forms.forEach((form) => {
     const formValidation = new FormValidator(selectors, form);
     formValidation.enableValidation(form);
+    popupAdd.addEventListener('submit', () => {
+        formValidation._makeButtonInactive(popupAdd.querySelector('#card-submit'));
+    })
 })
