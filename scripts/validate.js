@@ -1,4 +1,4 @@
-import {forms, popupAdd} from './index.js';
+import {forms} from './index.js';
 const selectors = {
     inputSelector: '.form__item',
     submitButtonSelector: '.form__submit-button',
