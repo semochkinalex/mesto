@@ -80,7 +80,7 @@ class FormValidator {
 forms.forEach((form) => {
     const formValidation = new FormValidator(selectors, form);
     formValidation.enableValidation(form);
-    popupAdd.addEventListener('submit', () => {
-        formValidation._makeButtonInactive(popupAdd.querySelector('#card-submit'));
+    form.addEventListener('submit', () => {
+        formValidation._makeButtonInactive(form.querySelector('.form__submit-button'));
     })
 })
