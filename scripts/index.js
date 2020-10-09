@@ -1,5 +1,5 @@
 import {Card} from './card.js'; 
-export {gallery, zoomImg, zoomTitle, zoom, openPopup, closeEsc, handleZoom, forms, popupAdd};
+export {gallery, zoom, handleZoom, forms};
 const forms = document.querySelectorAll('.form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const popups = document.querySelectorAll('.popup');
@@ -65,7 +65,7 @@ editButton.addEventListener('click', () => {
     openPopup(popupEdit);
 });
 
-function submitFormHandler (evt) {
+function submitFormHandler () {
     userName.textContent = nameInput.value;
     userJob.textContent = jobInput.value;
     closePopup();
