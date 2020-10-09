@@ -1,4 +1,4 @@
-import {gallery, zoomImg, zoomTitle, zoom, openPopup, handleZoom} from './index.js';
+import {gallery, handleZoom} from './index.js';
 import {initialCards} from './cards.js';
 export {Card};
 class Card {
