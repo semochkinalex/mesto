@@ -6,7 +6,6 @@ const selectors = {
     inputErrorClass: 'form__item_invalid',
     errorClass: 'form__input-error_active_true',
 }
-
 class FormValidator { 
         constructor(selectors, formElement){
         this._inputSelector = selectors.inputSelector;
