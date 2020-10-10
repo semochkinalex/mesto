@@ -94,9 +94,7 @@ function submitCardHandler () {
 cardForm.addEventListener('submit', submitCardHandler);
 
 initialCards.forEach((item) => {
-    const card = new Card(item, '#card-template');
-    const cardElement = card.renderCard();
-    gallery.prepend(cardElement);
+    renderCard(item);
 })
 
 export {gallery, zoom, forms, zoomImg, zoomTitle, openPopup};
