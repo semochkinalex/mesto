@@ -24,7 +24,9 @@ const gallery = document.querySelector('.gallery');
 
 popups.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
-        evt.target.classList.remove("popup__opened");
+        if(evt.target.classList.contains('popup__opened')){
+            closePopup();
+        }
     })
 });
 
