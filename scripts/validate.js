@@ -76,4 +76,5 @@ class FormValidator {
         this._setEventListeners();
     }
 }
+
 export {selectors, FormValidator};

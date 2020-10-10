@@ -47,8 +47,7 @@ function closeEsc (evt){
 
 const renderCard = (data) => {
     const card = new Card(data, '#card-template');
-    const cardElement = card.renderCard();
-    gallery.prepend(cardElement);
+    gallery.prepend(card.renderCard());
 }
 
 function openPopup (popup) {

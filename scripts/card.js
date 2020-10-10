@@ -21,7 +21,6 @@ class Card {
         return this._element;
     }
     _setEventListeners () {
-        this._element = this._getTemplate();
         const deleteButton = this._element.querySelector('.gallery__delete-button');
         const likeButton = this._element.querySelector('.gallery__like-button');
         const cardPic = this._element.querySelector('.gallery__item-image');
