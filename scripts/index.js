@@ -1,6 +1,6 @@
 import {Card} from './card.js'; 
 import {selectors, FormValidator} from './validate.js';
-export {gallery, zoom, forms, zoomImg, zoomTitle, openPopup};
+import {initialCards} from './cards.js';
 const forms = document.querySelectorAll('.form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const popups = document.querySelectorAll('.popup');
@@ -91,5 +91,13 @@ function submitCardHandler () {
     linkName.value = '';
     closePopup();
 }
-
 cardForm.addEventListener('submit', submitCardHandler);
+
+initialCards.forEach((item) => {
+    const card = new Card(item, '#card-template');
+    const cardElement = card.renderCard();
+    gallery.prepend(cardElement);
+})
+
+export {gallery, zoom, forms, zoomImg, zoomTitle, openPopup};
+

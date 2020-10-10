@@ -1,11 +1,10 @@
-import {gallery, openPopup, zoom, zoomTitle, zoomImg} from './index.js';
-import {initialCards} from './cards.js';
+import {openPopup, zoom, zoomTitle, zoomImg} from './index.js';
+
 class Card {
     constructor(data, cardSelector){
         this._title = data.name;
         this._image = data.link;  
         this._cardSelector = cardSelector;
-        this.isLiked = false;
     }
     _getTemplate () {
         const cardElement = document
@@ -27,7 +26,7 @@ class Card {
         const likeButton = this._element.querySelector('.gallery__like-button');
         const cardPic = this._element.querySelector('.gallery__item-image');
         this._deleteCard(deleteButton);
-        this._like(likeButton);
+        this._likeCard(likeButton);
         this._openZoom(cardPic);
     }
     _deleteCard (button) {
@@ -35,7 +34,7 @@ class Card {
             button.parentElement.remove();
         })  
     }
-    _like (button) {
+    _likeCard (button) {
         button.addEventListener('click', () => {
             button.classList.toggle('gallery__like-button_liked');
         })
@@ -53,9 +52,5 @@ class Card {
     }
     
 }
-initialCards.forEach((item) => {
-    const card = new Card(item, '#card-template');
-    const cardElement = card.renderCard();
-    gallery.prepend(cardElement);
-})
+
 export {Card};

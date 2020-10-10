@@ -1,4 +1,3 @@
-export {initialCards}
 const initialCards = [
     {
         name: 'Архыз',
@@ -25,3 +24,5 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+export {initialCards};
