@@ -1,6 +1,5 @@
 import {gallery, openPopup, zoom, zoomTitle, zoomImg} from './index.js';
 import {initialCards} from './cards.js';
-export {Card};
 class Card {
     constructor(data, cardSelector){
         this._title = data.name;
@@ -59,3 +58,4 @@ initialCards.forEach((item) => {
     const cardElement = card.renderCard();
     gallery.prepend(cardElement);
 })
+export {Card};

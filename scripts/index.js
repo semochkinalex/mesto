@@ -22,13 +22,6 @@ const cardForm = document.querySelector('.form__card');
 let popupOpened = document.querySelector('.popup__opened');
 const gallery = document.querySelector('.gallery');
 
-function handleZoom (titleValue, imageValue) {
-    openPopup(zoom);
-    zoomTitle.textContent = titleValue; 
-    zoomImg.setAttribute('src', imageValue); 
-    zoomImg.alt = titleValue; 
-}
-
 popups.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
         evt.target.classList.remove("popup__opened");
@@ -48,6 +41,12 @@ function closeEsc (evt){
     if(evt.key === 'Escape') {
         closePopup();
     }
+}
+
+const renderCard = (data) => {
+    const card = new Card(data, '#card-template');
+    const cardElement = card.renderCard();
+    gallery.prepend(cardElement);
 }
 
 function openPopup (popup) {
@@ -87,9 +86,7 @@ function submitCardHandler () {
     name : titleName.value,
     link : linkName.value,
     }
-    const card = new Card(data, '#card-template');
-    const cardElement = card.renderCard();
-    gallery.prepend(cardElement);
+    renderCard(data);
     titleName.value = '';
     linkName.value = '';
     closePopup();
