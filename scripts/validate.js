@@ -1,4 +1,3 @@
-import {forms} from './index.js';
 const selectors = {
     inputSelector: '.form__item',
     submitButtonSelector: '.form__submit-button',
@@ -77,10 +76,4 @@ class FormValidator {
         this._setEventListeners();
     }
 }
-forms.forEach((form) => {
-    const formValidation = new FormValidator(selectors, form);
-    formValidation.enableValidation(form);
-    form.addEventListener('submit', () => {
-        formValidation._makeButtonInactive(form.querySelector('.form__submit-button'));
-    })
-})
+export {selectors, FormValidator};

@@ -1,4 +1,5 @@
 import {Card} from './card.js'; 
+import {selectors, FormValidator} from './validate.js';
 export {gallery, zoom, forms, zoomImg, zoomTitle, openPopup};
 const forms = document.querySelectorAll('.form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
@@ -64,6 +65,14 @@ editButton.addEventListener('click', () => {
     jobInput.value = userJob.textContent; 
     openPopup(popupEdit);
 });
+
+forms.forEach((form) => {
+    const formValidation = new FormValidator(selectors, form);
+    formValidation.enableValidation(form);
+    form.addEventListener('submit', () => {
+        formValidation._makeButtonInactive(form.querySelector('.form__submit-button'));
+    })
+})
 
 function submitFormHandler () {
     userName.textContent = nameInput.value;
