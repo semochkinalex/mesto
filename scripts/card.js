@@ -26,7 +26,7 @@ class Card {
         const likeButton = this._element.querySelector('.gallery__like-button');
         const cardPic = this._element.querySelector('.gallery__item-image');
         this._deleteCard(deleteButton);
-        this._likeCard(likeButton);
+        this._handleLikeButton(likeButton);
         this._openZoom(cardPic);
     }
     _deleteCard (button) {
@@ -34,7 +34,7 @@ class Card {
             button.parentElement.remove();
         })  
     }
-    _likeCard (button) {
+    _handleLikeButton (button) {
         button.addEventListener('click', () => {
             button.classList.toggle('gallery__like-button_liked');
         })
