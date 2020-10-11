@@ -1,6 +1,7 @@
-import {Card} from './card.js'; 
-import {selectors, FormValidator} from './validate.js';
+import {Card} from './Card.js'; 
+import {selectors, FormValidator} from './FormValidation.js';
 import {initialCards} from './cards.js';
+
 const forms = document.querySelectorAll('.form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const popups = document.querySelectorAll('.popup');
