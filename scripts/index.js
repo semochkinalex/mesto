@@ -71,7 +71,7 @@ forms.forEach((form) => {
     const formValidation = new FormValidator(selectors, form);
     formValidation.enableValidation(form);
     form.addEventListener('submit', () => {
-        formValidation._makeButtonInactive(form.querySelector('.form__submit-button'));
+        formValidation.cleanErrors();
     })
 })
 

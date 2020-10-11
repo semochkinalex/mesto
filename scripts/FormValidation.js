@@ -1,10 +1,4 @@
-const selectors = {
-    inputSelector: '.form__item',
-    submitButtonSelector: '.form__submit-button',
-    inactiveButtonClass: 'form__submit-button_disabled_true',
-    inputErrorClass: 'form__item_invalid',
-    errorClass: 'form__input-error_active_true',
-}
+import {selectors} from './selectors.js';
 class FormValidator { 
         constructor(selectors, formElement){
         this._inputSelector = selectors.inputSelector;
@@ -13,6 +7,8 @@ class FormValidator {
         this._inputErrorClass = selectors.inputErrorClass;
         this._errorClass = selectors.errorClass;
         this._formElement = formElement;
+        this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     }
     _showInputError (inputElement, errorMessage) {
         const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
@@ -25,37 +21,35 @@ class FormValidator {
         errorElement.classList.remove(`${this._errorClass}`);
     }
     _setEventListeners () {
-        const inputList = Array.from(this._formElement.querySelectorAll(`${this._inputSelector}`));
-        const buttonElement = this._formElement.querySelector(`${this._submitButtonSelector}`);
-        this._handleButtonState(inputList, buttonElement);
-        inputList.forEach((inputElement) => {
+        this._handleButtonState();
+        this._inputList.forEach((inputElement) => {
             inputElement.addEventListener("input", () => {
                 this._checkInputValidity(inputElement);
-                this._handleButtonState(inputList, buttonElement);
+                this._handleButtonState();
             });
         });
     };
     
-    _hasInvalidInput (inputList) {
-        return inputList.some((inputElement) => !inputElement.validity.valid);
+    _hasInvalidInput () {
+        return this._inputList.some((inputElement) => !inputElement.validity.valid);
       };
     
-    _handleButtonState  (inputList, buttonElement) {
-        if(this._hasInvalidInput(inputList)){
-            this._makeButtonInactive(buttonElement);
+    _handleButtonState  () {
+        if(this._hasInvalidInput()){
+            this._makeButtonInactive();
         } else {
-            this._makeButtonActive(buttonElement);
+            this._makeButtonActive();
         }
     }
     
-    _makeButtonActive (buttonElement) {
-        buttonElement.classList.remove(`${this._inactiveButtonClass}`); 
-        buttonElement.removeAttribute('disabled', true);
+    _makeButtonActive () {
+        this._buttonElement.classList.remove(`${this._inactiveButtonClass}`); 
+        this._buttonElement.removeAttribute('disabled', true);
     }
     
-    _makeButtonInactive (buttonElement) {
-        buttonElement.classList.add(`${this._inactiveButtonClass}`);  
-        buttonElement.setAttribute('disabled', true);
+    _makeButtonInactive () {
+        this._buttonElement.classList.add(`${this._inactiveButtonClass}`);  
+        this._buttonElement.setAttribute('disabled', true);
     }
     
     _checkInputValidity (inputElement){
@@ -69,11 +63,17 @@ class FormValidator {
             this._hideInputError(inputElement);
         }
     }
+    cleanErrors () {
+        this._makeButtonInactive();
+        this._inputList.forEach((inputElement) => { 
+            this._hideInputError(inputElement)
+          });
+    }
     enableValidation () {
-        this._formElement.addEventListener("submit", (evt) => {
-                evt.preventDefault();
-            })
-        this._setEventListeners();
+    this._formElement.addEventListener("submit", (evt) => {
+        evt.preventDefault();
+    })
+    this._setEventListeners();
     }
 }
 
