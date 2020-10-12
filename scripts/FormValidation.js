@@ -1,4 +1,5 @@
 import {selectors} from './selectors.js';
+
 class FormValidator { 
         constructor(selectors, formElement){
         this._inputSelector = selectors.inputSelector;
