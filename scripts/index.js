@@ -1,6 +1,7 @@
 import {Card} from './Card.js'; 
-import {selectors, FormValidator} from './FormValidation.js';
+import {FormValidator} from './FormValidation.js';
 import {initialCards} from './cards.js';
+import {selectors} from './selectors.js';
 
 const forms = document.querySelectorAll('.form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
@@ -69,7 +70,7 @@ editButton.addEventListener('click', () => {
 
 forms.forEach((form) => {
     const formValidation = new FormValidator(selectors, form);
-    formValidation.enableValidation(form);
+    formValidation.enableValidation();
     form.addEventListener('submit', () => {
         formValidation.cleanErrors();
     })

@@ -78,4 +78,4 @@ class FormValidator {
     }
 }
 
-export {selectors, FormValidator};
+export {FormValidator};
