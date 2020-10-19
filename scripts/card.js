@@ -51,5 +51,5 @@ class Card {
     }
     
 }
-// Test
+
 export {Card};

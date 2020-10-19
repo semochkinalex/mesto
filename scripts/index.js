@@ -2,6 +2,7 @@ import {Card} from './Card.js';
 import {FormValidator} from './FormValidation.js';
 import {initialCards} from './cards.js';
 import {selectors} from './selectors.js';
+import Section from './Section.js';
 
 const forms = document.querySelectorAll('.form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
@@ -47,9 +48,15 @@ function closeEsc (evt){
     }
 }
 
-const renderCard = (data) => {
-    const card = new Card(data, '#card-template');
-    gallery.prepend(card.renderCard());
+const cardList = new Section({data : initialCards, renderer: (item) => {
+    renderCard(item);
+}}, '.gallery');
+cardList.renderItems();
+
+function renderCard(item) {
+    const card = new Card(item, '#card-template');
+    const cardElement = card.renderCard();
+    cardList.addItem(cardElement);
 }
 
 function openPopup (popup) {
@@ -89,16 +96,16 @@ function submitCardHandler () {
     name : titleName.value,
     link : linkName.value,
     }
-    renderCard(data);
+    const cardElement = renderCard(data);
+    cardList.addItem(cardElement);
     titleName.value = '';
     linkName.value = '';
     closePopup();
 }
 cardForm.addEventListener('submit', submitCardHandler);
 
-initialCards.forEach((item) => {
-    renderCard(item);
-})
+// initialCards.forEach((item) => {
+//     renderCard(item);
+// })
 
 export {gallery, zoom, forms, zoomImg, zoomTitle, openPopup};
-
