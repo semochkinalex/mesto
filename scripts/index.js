@@ -96,8 +96,7 @@ function submitCardHandler () {
     name : titleName.value,
     link : linkName.value,
     }
-    const cardElement = renderCard(data);
-    cardList.addItem(cardElement);
+    renderCard(data);
     titleName.value = '';
     linkName.value = '';
     closePopup();
