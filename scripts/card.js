@@ -1,10 +1,11 @@
 import {zoom, zoomTitle, zoomImg} from './index.js';
 
 class Card {
-    constructor(data, cardSelector){
+    constructor(data, cardSelector, handleCardClick){
         this._title = data.name;
         this._image = data.link;  
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
     _getTemplate () {
         const cardElement = document
@@ -26,7 +27,8 @@ class Card {
         const cardPic = this._element.querySelector('.gallery__item-image');
         this._deleteCard(deleteButton);
         this._handleLikeButton(likeButton);
-        this._openZoom(cardPic);
+        this._handleCardClick(cardPic, this._title, this._image);
+        // this._openZoom(cardPic);
     }
     _deleteCard (button) {
         button.addEventListener('click', () => {

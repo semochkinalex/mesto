@@ -27,6 +27,7 @@ const cardForm = document.querySelector('.form__card');
 const gallery = document.querySelector('.gallery');
 const editClose = document.querySelector('.popup__edit-close');
 const addClose = document.querySelector('.popup__add-close');
+const zoomClose = document.querySelector('.zoom__close-button');
 const popupSelectors = ['.popup__edit', '.popup__card', 'zoom'];
 
 // const test = new PopupWithImage('hello');
@@ -53,7 +54,13 @@ function handleZoom () {
 }
 
 function renderCard(item) {
-    const card = new Card(item, '#card-template');
+    const card = new Card(item, '#card-template', (picture, title, image) => {
+        picture.addEventListener('click', () => {
+            const imagePopup = new PopupWithImage('.zoom');
+            imagePopup.open(title, image);
+            // zoomClose.addEventListener('click', imagePopup.close());
+        })
+    });
     const cardElement = card.renderCard();
     cardList.addItem(cardElement);
 }
