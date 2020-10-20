@@ -3,6 +3,7 @@ import {FormValidator} from './FormValidation.js';
 import {initialCards} from './cards.js';
 import {selectors} from './selectors.js';
 import Section from './Section.js';
+import Popup from './Popup.js';
 
 const forms = document.querySelectorAll('.form');
 const closeButtons = document.querySelectorAll('.popup__close-button');
@@ -16,42 +17,30 @@ const linkName = document.querySelector('.form__item_action_edit-link');
 const zoom = document.querySelector('.zoom');
 const nameInput = document.querySelector('.form__item_action_edit-name');
 const jobInput = document.querySelector('.form__item_action_edit-job');
-const popupEdit = document.querySelector('.popup__edit');
-const popupAdd = document.querySelector('.popup__card');
+// const popupEdit = document.querySelector('.popup__edit');
+// const popupAdd = document.querySelector('.popup__card');
 const zoomTitle = document.querySelector('.zoom__title'); 
 const zoomImg = document.querySelector('.zoom__image'); 
 const formElement = document.querySelector('.form');
 const cardForm = document.querySelector('.form__card');
-let popupOpened = document.querySelector('.popup__opened');
 const gallery = document.querySelector('.gallery');
-
-popups.forEach((popup) => {
-    popup.addEventListener('click', (evt) => {
-        if(evt.target.classList.contains('popup__opened')){
-            closePopup();
-        }
-    })
-});
-
-function closePopup(){
-    popupOpened.classList.remove('popup__opened');
-    document.removeEventListener('keydown', closeEsc);
-}
-
-closeButtons.forEach((button) => {
-     button.addEventListener('click', closePopup);
-})
-
-function closeEsc (evt){
-    if(evt.key === 'Escape') {
-        closePopup();
-    }
-}
+const editClose = document.querySelector('.popup__edit-close');
+const addClose = document.querySelector('.popup__add-close');
+const popupSelectors = ['.popup__edit', '.popup__card', 'zoom'];
+let popupOpened = 0;
 
 const cardList = new Section({data : initialCards, renderer: (item) => {
     renderCard(item);
 }}, '.gallery');
 cardList.renderItems();
+
+popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        if(evt.target.classList.contains('popup__opened')){
+
+        }
+    })
+});
 
 function renderCard(item) {
     const card = new Card(item, '#card-template');
@@ -65,15 +54,15 @@ function openPopup (popup) {
     document.addEventListener('keydown', closeEsc);
 }
 
-addButton.addEventListener('click', () => {
-    openPopup(popupAdd);
-});
-
 editButton.addEventListener('click', () => {
     nameInput.value = userName.textContent;
     jobInput.value = userJob.textContent; 
-    openPopup(popupEdit);
 });
+const editPopup = new Popup('.popup__edit');
+editPopup.setEventListeners(editButton, editClose);
+
+const addPopup = new Popup('.popup__card');
+addPopup.setEventListeners(addButton, addClose);
 
 forms.forEach((form) => {
     const formValidation = new FormValidator(selectors, form);
@@ -83,10 +72,12 @@ forms.forEach((form) => {
     })
 })
 
+
+
 function submitFormHandler () {
     userName.textContent = nameInput.value;
     userJob.textContent = jobInput.value;
-    closePopup();
+    editPopup.close();
 }
 
 formElement.addEventListener('submit', submitFormHandler);
@@ -99,12 +90,8 @@ function submitCardHandler () {
     renderCard(data);
     titleName.value = '';
     linkName.value = '';
-    closePopup();
+    addPopup.close();
 }
 cardForm.addEventListener('submit', submitCardHandler);
-
-// initialCards.forEach((item) => {
-//     renderCard(item);
-// })
 
 export {gallery, zoom, forms, zoomImg, zoomTitle, openPopup};

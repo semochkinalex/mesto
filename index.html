@@ -28,7 +28,7 @@
             <template id="card-template">
                 <div class="gallery__item">
                     <button class="gallery__delete-button" aria-label="Удалить карточку"></button> 
-                <img class="gallery__item-image" alt="Фотография" src="./images/kirill-pershin-1088404-unsplash.jpg">
+                <img class="popup__open gallery__item-image" alt="Фотография" src="./images/kirill-pershin-1088404-unsplash.jpg">
                 <div class="gallery__item-description">
                 <h2 class="gallery__item-title">Карачевск</h2>  
                 <button class="gallery__like-button" aria-label="Поставить лайк"></button>
@@ -50,7 +50,7 @@
                 <span class="form__input-error" id="info-error"></span> 
                 <button type="submit" class="form__submit-button" aria-label="Отправить форму">Сохранить</button> 
                 </form>
-            <button class="popup__close-button" type="button" aria-label="Закрыть форму"></button>
+            <button class="popup__close-button popup__edit-close" type="button" aria-label="Закрыть форму"></button>
         </div>
     </section>
     <section class="popup popup__card">
@@ -63,7 +63,7 @@
                 <span class="form__input-error" id="card-error"></span> 
                 <button type="submit" class="form__submit-button" id="card-submit" aria-label="Отправить форму">Сохранить</button>
                 </form>
-            <button class="popup__close-button " type="button" aria-label="Закрыть форму"></button>
+            <button class="popup__close-button popup__add-close" type="button" aria-label="Закрыть форму"></button>
         </div>
     </section>
     <section class="popup zoom">
