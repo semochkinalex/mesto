@@ -57,8 +57,7 @@ function renderCard(item) {
     const card = new Card(item, '#card-template', (picture, title, image) => {
         picture.addEventListener('click', () => {
             const imagePopup = new PopupWithImage('.zoom');
-            imagePopup.open(title, image);
-            // zoomClose.addEventListener('click', imagePopup.close());
+            imagePopup.setEventListeners(picture, zoomClose, title, image);
         })
     });
     const cardElement = card.renderCard();
