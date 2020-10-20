@@ -15,17 +15,29 @@ export default class Popup {
           this.close();
         }
       };
-    setEventListeners(openButton, closeButton){
-        openButton.addEventListener('click', () => {
-            this.open();
-        })
+    setEventListeners(){
+        const closeButton = this._popup.querySelector('.popup__close-button');
         closeButton.addEventListener('click', () => {
             this.close();
-        })
+        });
         this._popup.addEventListener('click', (evt) => {
             if(evt.target.classList.contains('popup__opened')){
                 this.close();
-            }
+            } 
         })
     }
 }
+
+
+
+        // openButton.addEventListener('click', () => {
+        //     this.open();
+        // })
+        // closeButton.addEventListener('click', () => {
+        //     this.close();
+        // })
+        // this._popup.addEventListener('click', (evt) => {
+        //     if(evt.target.classList.contains('popup__opened')){
+        //         this.close();
+        //     }
+        // })

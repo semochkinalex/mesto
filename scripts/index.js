@@ -54,10 +54,11 @@ function handleZoom () {
 }
 
 function renderCard(item) {
-    const card = new Card(item, '#card-template', (picture, title, image) => {
-        picture.addEventListener('click', () => {
+    const card = new Card(item, '#card-template', (button, title, image) => {
+        button.addEventListener('click', () => {
             const imagePopup = new PopupWithImage('.zoom');
-            imagePopup.setEventListeners(picture, zoomClose, title, image);
+            imagePopup.setEventListeners();
+            imagePopup.open(title, image);
         })
     });
     const cardElement = card.renderCard();
@@ -72,7 +73,10 @@ const editPopup = new Popup('.popup__edit');
 editPopup.setEventListeners(editButton, editClose);
 
 const addPopup = new Popup('.popup__card');
-addPopup.setEventListeners(addButton, addClose);
+addPopup.setEventListeners();
+addButton.addEventListener('click', () => {
+    addPopup.open();
+});
 
 // const addPopup = new Popup('.popup__card');
 // addPopup.setEventListeners(addButton, addClose);
