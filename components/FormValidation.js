@@ -1,6 +1,4 @@
-import {selectors} from './selectors.js';
-
-class FormValidator { 
+export default class FormValidator { 
         constructor(selectors, formElement){
         this._inputSelector = selectors.inputSelector;
         this._submitButtonSelector = selectors.submitButtonSelector;
@@ -30,7 +28,6 @@ class FormValidator {
             });
         });
     };
-    
     _hasInvalidInput () {
         return this._inputList.some((inputElement) => !inputElement.validity.valid);
       };
@@ -77,5 +74,3 @@ class FormValidator {
     this._setEventListeners();
     }
 }
-
-export {FormValidator};

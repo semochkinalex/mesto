@@ -27,17 +27,3 @@ export default class Popup {
         })
     }
 }
-
-
-
-        // openButton.addEventListener('click', () => {
-        //     this.open();
-        // })
-        // closeButton.addEventListener('click', () => {
-        //     this.close();
-        // })
-        // this._popup.addEventListener('click', (evt) => {
-        //     if(evt.target.classList.contains('popup__opened')){
-        //         this.close();
-        //     }
-        // })

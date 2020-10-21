@@ -1,9 +1,7 @@
-import {zoom, zoomTitle, zoomImg} from './index.js';
-
-class Card {
-    constructor(data, cardSelector, handleCardClick){
-        this._title = data.name;
-        this._image = data.link;  
+export default class Card {
+    constructor({name, link}, cardSelector, handleCardClick){
+        this._title = name;
+        this._image = link;  
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
     }
@@ -28,7 +26,6 @@ class Card {
         this._deleteCard(deleteButton);
         this._handleLikeButton(likeButton);
         this._handleCardClick(cardPic, this._title, this._image);
-        // this._openZoom(cardPic);
     }
     _deleteCard (button) {
         button.addEventListener('click', () => {
@@ -40,18 +37,5 @@ class Card {
             button.classList.toggle('gallery__like-button_liked');
         })
     }
-    _openZoom (button) {
-        button.addEventListener('click', () => {
-            this._handleZoom();
-        })
-    }
-    _handleZoom () {
-        openPopup(zoom);
-        zoomTitle.textContent = this._title; 
-        zoomImg.setAttribute('src', this._image); 
-        zoomImg.alt = this._title; 
-    }
-    
 }
 
-export {Card};
