@@ -5,18 +5,22 @@ module.exports = {
     entry: { main: './src/pages/index.js' },
     output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
+    publicPath: "/",
   },
   devtool: 'inline-source-map',
   module: {
-    rules: [
+    rules: [  
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
             loader: 'file-loader',
           },
         ],
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
       },
       {
         test: /\.js$/,
