@@ -6,7 +6,8 @@ export default class PopupWithForm extends Popup{
         this._callback = callback
     }   
     _getInputValues () {
-        const inputs = this._popup.querySelectorAll('.form__item');
+        const inputs = Object.assign(this._popup.querySelectorAll('.form__item'));
+        console.log(inputs);
         return inputs;
     }
     setEventListeners() {
@@ -14,5 +15,12 @@ export default class PopupWithForm extends Popup{
             this._callback()
         });
         super.setEventListeners();
-    }   
+    }  
+    close() { 
+        super.close();
+        const inputs = this._getInputValues();
+        inputs.forEach((input) => {
+            input.value = '';
+        })
+    } 
 }

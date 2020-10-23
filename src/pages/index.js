@@ -1,5 +1,5 @@
 // Константы
-import './index.css';
+// import './index.css';
 
 import {
     forms, addButton, editButton,
@@ -13,7 +13,6 @@ import FormValidator from '../components/FormValidation.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import PopupCard from '../components/PopupCard.js';
 import UserInfo from '../components/UserInfo.js';
 
 const editHandler = new UserInfo('.profile__name', '.profile__job');
@@ -37,7 +36,7 @@ function renderCard(item) {
 
 // addPopup
 
-const addPopup = new PopupCard ('.popup__card', () => {
+const addPopup = new PopupWithForm ('.popup__card', () => {
     const data = {
         name : titleName.value,
         link : linkName.value,
@@ -49,6 +48,8 @@ addButton.addEventListener('click', () => {
     addPopup.open();
 })
 addPopup.setEventListeners();
+
+addPopup._getInputValues();
 
 // editPopup
 
