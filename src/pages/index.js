@@ -1,4 +1,6 @@
 // Константы
+import './index.css';
+
 import {
     forms, addButton, editButton,
     titleName, linkName,
