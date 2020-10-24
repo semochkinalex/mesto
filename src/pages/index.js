@@ -1,5 +1,5 @@
 // Константы
-// import './index.css';
+import './index.css';
 
 import {
     forms, addButton, editButton,
@@ -17,6 +17,9 @@ import UserInfo from '../components/UserInfo.js';
 
 const editHandler = new UserInfo('.profile__name', '.profile__job');
 
+const imagePopup = new PopupWithImage('.zoom');
+imagePopup.setEventListeners();
+
 const cardList = new Section({data : initialCards, renderer: (item) => {
     renderCard(item);
 }}, '.gallery');
@@ -25,8 +28,6 @@ cardList.renderItems();
 function renderCard(item) {
     const card = new Card(item, '#card-template', (button, title, image) => {
         button.addEventListener('click', () => {
-            const imagePopup = new PopupWithImage('.zoom');
-            imagePopup.setEventListeners();
             imagePopup.open(title, image);
         })
     });

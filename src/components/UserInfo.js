@@ -10,7 +10,6 @@ export default class UserInfo {
         }
     }
     setUserInfo (userInput, jobInput) {
-        const {userName, userJob} = this.getUserInfo();
         this._userName.textContent = userInput;
         this._userJob.textContent = jobInput
     }
