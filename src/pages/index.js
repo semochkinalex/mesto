@@ -1,11 +1,11 @@
 // Константы
-import './index.css';
+// import './index.css';
 
 import {
-    forms, addButton, editButton,
+    addButton, editButton, closeCard, closeEdit,
     titleName, linkName,
     nameInput, jobInput, zoomTitle, zoomImg,
-    initialCards, selectors,
+    initialCards, selectors, formCard, formEdit
 } from '../utils/constants.js';
 
 import Card from '../components/Card.js'; 
@@ -14,6 +14,16 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+
+// FormCard
+
+const cardValidationHandler = new FormValidator(selectors, formCard);
+cardValidationHandler.enableValidation();
+
+// FormEdit
+
+const editValidationHandler = new FormValidator(selectors, formEdit);
+editValidationHandler.enableValidation();
 
 const editHandler = new UserInfo('.profile__name', '.profile__job');
 
@@ -28,13 +38,18 @@ cardList.renderItems();
 function renderCard(item) {
     const card = new Card(item, '#card-template', (button, title, image) => {
         button.addEventListener('click', () => {
-            imagePopup.open(title, image);
+            imagePopup.open(
+                {
+                    title: title,
+                    link: image,
+                }
+            );
         })
     });
     const cardElement = card.renderCard();
     cardList.addItem(cardElement);
 }
-
+    
 // addPopup
 
 const addPopup = new PopupWithForm ('.popup__card', () => {
@@ -43,9 +58,12 @@ const addPopup = new PopupWithForm ('.popup__card', () => {
         link : linkName.value,
     }
     renderCard(data);
+    cardValidationHandler.cleanErrors();
     addPopup.close();
 })
+
 addButton.addEventListener('click', () => {
+    cardValidationHandler.cleanErrors();
     addPopup.open();
 })
 addPopup.setEventListeners();
@@ -55,7 +73,11 @@ addPopup._getInputValues();
 // editPopup
 
 const editPopup = new PopupWithForm ('.popup__edit', () => {
-    editHandler.setUserInfo(nameInput.value, jobInput.value);
+    editHandler.setUserInfo({
+        userInput: nameInput.value,
+        jobInput: jobInput.value,
+    });
+    editValidationHandler.cleanErrors();
     editPopup.close();
 });
 
@@ -63,19 +85,10 @@ editButton.addEventListener('click', () => {
     const info = editHandler.getUserInfo();
     nameInput.value = info.userName;
     jobInput.value = info.userJob;
+    editValidationHandler.cleanErrors();
     editPopup.open();
 })
 
 editPopup.setEventListeners();
-
-// Валидация
-
-forms.forEach((form) => {
-    const formValidation = new FormValidator(selectors, form);
-    formValidation.enableValidation();
-    form.addEventListener('submit', () => {
-        formValidation.cleanErrors();
-    })
-})
 
 export {zoomImg, zoomTitle};

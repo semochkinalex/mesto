@@ -9,7 +9,7 @@ export default class UserInfo {
             userJob: this._userJob.textContent,
         }
     }
-    setUserInfo (userInput, jobInput) {
+    setUserInfo ({userInput, jobInput}) {
         this._userName.textContent = userInput;
         this._userJob.textContent = jobInput
     }

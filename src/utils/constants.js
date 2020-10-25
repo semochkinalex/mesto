@@ -40,3 +40,7 @@ export const nameInput = document.querySelector('.form__item_action_edit-name');
 export const jobInput = document.querySelector('.form__item_action_edit-job');
 export const zoomTitle = document.querySelector('.zoom__title'); 
 export const zoomImg = document.querySelector('.zoom__image'); 
+export const formCard = document.querySelector('.form__card');
+export const formEdit = document.querySelector('.form__edit');
+export const closeCard = document.querySelector('.popup__add-close');
+export const closeEdit = document.querySelector('.popup__edit-close');

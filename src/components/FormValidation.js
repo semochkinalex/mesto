@@ -18,6 +18,7 @@ export default class FormValidator {
         const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
         errorElement.textContent = '';
         errorElement.classList.remove(`${this._errorClass}`);
+        inputElement.classList.remove(this._inputErrorClass);
     }
     _setEventListeners () {
         this._handleButtonState();
@@ -64,7 +65,7 @@ export default class FormValidator {
     cleanErrors () {
         this._makeButtonInactive();
         this._inputList.forEach((inputElement) => { 
-            this._hideInputError(inputElement)
+            this._hideInputError(inputElement);
           });
     }
     enableValidation () {

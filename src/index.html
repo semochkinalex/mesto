@@ -4,6 +4,7 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Mesto</title> 
+    <link href='./pages/index.css' type='text/css' rel="stylesheet" >
 </head> 
 <body class="page"> 
         <header class="header"> 
@@ -42,7 +43,7 @@
     <section class="popup popup__edit">  
         <div class="popup__container">   
             <p class="popup__title">Редактировать профиль</p> 
-                <form class="form" novalidate>  
+                <form class="form form__edit" novalidate>  
                 <input autocomplete="off" class="form__item form__item_action_edit-name" type="text" name="name" placeholder="Иия" required minlength="2" maxlength="40" id="name">    
                 <span class="form__input-error" id="name-error"></span>  
                 <input autocomplete="off" class="form__item form__item_action_edit-job"  type="text" name="job" required placeholder="Работа" minlength="2" maxlength="200" id="info">    
@@ -72,5 +73,6 @@
                     <h2 class="zoom__title">Картинка</h2> 
          </div> 
     </section> 
+    <script src="./pages/index.js" defer type="module"></script>
 </body> 
 </html>  
