@@ -1,5 +1,5 @@
 // Константы
-// import './index.css';
+import './index.css';
 
 import {
     addButton, editButton, closeCard, closeEdit,
