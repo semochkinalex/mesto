@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link href='./pages/index.css' type='text/css' rel="stylesheet">
+    <!-- <link href='./pages/index.css' type='text/css' rel="stylesheet"> -->
 </head>
 
 <body class="page">
@@ -64,10 +64,10 @@
         <div class="popup__container">
             <p class="popup__title">Добавить карточку</p>
             <form class="form form__card" novalidate>
-                <input autocomplete="off" class="form__item form__item_action_edit-title" type="text" name="card-title"
+                <input autocomplete="off" class="form__item form__item_action_edit-title" type="text" name="title"
                     placeholder="Название" required minlength="2" maxlength="30" id="card-title">
                 <span class="form__input-error" id="card-title-error"></span>
-                <input autocomplete="off" class="form__item form__item_action_edit-link" type="url" name="img-link"
+                <input autocomplete="off" class="form__item form__item_action_edit-link" type="url" name="link"
                     required placeholder="Ссылка на картинку" id="card">
                 <span class="form__input-error" id="card-error"></span>
                 <button type="submit" class="form__submit-button" id="card-submit"
@@ -83,7 +83,6 @@
             <h2 class="zoom__title">Картинка</h2>
         </div>
     </section>
-    <script src="./pages/index.js" defer type="module"></script>
+    <!-- <script src="./pages/index.js" defer type="module"></script> -->
 </body>
-
 </html>

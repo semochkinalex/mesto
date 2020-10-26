@@ -1,5 +1,5 @@
 // Константы
-// import './index.css';
+import './index.css';
 
 import {
     addButton, editButton, closeCard, closeEdit,
@@ -52,10 +52,10 @@ function renderCard(item) {
     
 // addPopup
 
-const addPopup = new PopupWithForm ('.popup__card', () => {
+const addPopup = new PopupWithForm ('.popup__card', ({title, link}) => {
     const data = {
-        name : titleName.value,
-        link : linkName.value,
+        name : title,
+        link : link,
     }
     renderCard(data);
     cardValidationHandler.cleanErrors();
@@ -72,10 +72,10 @@ addPopup._getInputValues();
 
 // editPopup
 
-const editPopup = new PopupWithForm ('.popup__edit', () => {
+const editPopup = new PopupWithForm ('.popup__edit', ({name, job}) => {
     editHandler.setUserInfo({
-        userInput: nameInput.value,
-        jobInput: jobInput.value,
+        userInput: name,
+        jobInput: job,
     });
     editValidationHandler.cleanErrors();
     editPopup.close();
@@ -87,7 +87,7 @@ editButton.addEventListener('click', () => {
     jobInput.value = info.userJob;
     editValidationHandler.cleanErrors();
     editPopup.open();
-})
+});
 
 editPopup.setEventListeners();
 
