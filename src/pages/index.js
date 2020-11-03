@@ -31,7 +31,7 @@ fetch('https://mesto.nomoreparties.co/v1/cohort-17/users/me', {
     editHandler.setUserInfo({
         userInput: res.name,
         jobInput: res.about,
-        avatarInput: res.avatar,
+        avatarInput: res.avatar, // Not so sure about this line
     })
   });
 
