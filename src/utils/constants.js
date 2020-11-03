@@ -44,3 +44,4 @@ export const formCard = document.querySelector('.form__card');
 export const formEdit = document.querySelector('.form__edit');
 export const closeCard = document.querySelector('.popup__add-close');
 export const closeEdit = document.querySelector('.popup__edit-close');
+export const confirmationForm = document.querySelector('.confirmation__form');

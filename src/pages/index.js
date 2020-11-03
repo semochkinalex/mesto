@@ -5,7 +5,8 @@ import {
     addButton, editButton, closeCard, closeEdit,
     titleName, linkName,
     nameInput, jobInput, zoomTitle, zoomImg,
-    initialCards, selectors, formCard, formEdit
+    initialCards, selectors, formCard, formEdit, // Delete unused constants
+    confirmationForm,
 } from '../utils/constants.js';
 
 import Card from '../components/Card.js'; 
@@ -14,6 +15,7 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import Popup from '../components/Popup.js';
 
 // FormCard
 
@@ -45,7 +47,16 @@ function renderCard(item) {
                 }
             );
         })
-    });
+    },
+    (button) => {
+        confirmationPopup.open();
+        confirmationForm.addEventListener('submit', (evt) => { // I think refactor may be applied
+            evt.preventDefault();
+            confirmationPopup.close();
+            button.parentElement.remove();
+        })
+
+    })
     const cardElement = card.renderCard();
     cardList.addItem(cardElement);
 }
@@ -90,5 +101,10 @@ editButton.addEventListener('click', () => {
 });
 
 editPopup.setEventListeners();
+
+// Delete confirmation
+
+const confirmationPopup = new Popup ('.confirmation');
+confirmationPopup.setEventListeners();
 
 export {zoomImg, zoomTitle};
