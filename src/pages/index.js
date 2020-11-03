@@ -17,6 +17,24 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import Popup from '../components/Popup.js';
 
+// Server
+
+fetch('https://mesto.nomoreparties.co/v1/cohort-17/users/me', {
+  headers: {
+    authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585'
+  }
+})
+  .then(res => res.json())
+  .then((res) => {
+    JSON.stringify(res);
+    console.log(res);
+    editHandler.setUserInfo({
+        userInput: res.name,
+        jobInput: res.about,
+        avatarInput: res.avatar,
+    })
+  });
+
 // FormCard
 
 const cardValidationHandler = new FormValidator(selectors, formCard);
@@ -27,7 +45,7 @@ cardValidationHandler.enableValidation();
 const editValidationHandler = new FormValidator(selectors, formEdit);
 editValidationHandler.enableValidation();
 
-const editHandler = new UserInfo('.profile__name', '.profile__job');
+const editHandler = new UserInfo('.profile__name', '.profile__job', '.profile__avatar');
 
 const imagePopup = new PopupWithImage('.zoom');
 imagePopup.setEventListeners();
