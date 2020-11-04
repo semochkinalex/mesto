@@ -123,12 +123,47 @@ fetch('https://mesto.nomoreparties.co/v1/cohort-17/cards', {
     .then((res) => {
         JSON.stringify(res);
         cardList.renderItems(res);
-    })
+    });
 
 // FormCard
 
 const cardValidationHandler = new FormValidator(selectors, formCard);
 cardValidationHandler.enableValidation();
+
+// addPopup
+
+const addPopup = new PopupWithForm('.popup__card', ({ title, link }) => {
+    const data = {
+        name: title,
+        link: link,
+    }
+    renderCard(data);
+    cardValidationHandler.cleanErrors();
+    addPopup.close();
+
+    fetch('https://mesto.nomoreparties.co/v1/cohort-17/cards', {
+        method: 'POST',
+        headers: {
+            authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: title,
+            link: link,
+        })
+    })
+      .then((res) => {
+          console.log(res);
+      })
+})
+
+addButton.addEventListener('click', () => {
+    cardValidationHandler.cleanErrors();
+    addPopup.open();
+})
+addPopup.setEventListeners();
+
+addPopup._getInputValues();
 
 // FormEdit
 
@@ -163,26 +198,6 @@ function renderCard(item) {
     const cardElement = card.renderCard();
     cardList.addItem(cardElement);
 }
-
-// addPopup
-
-const addPopup = new PopupWithForm('.popup__card', ({ title, link }) => {
-    const data = {
-        name: title,
-        link: link,
-    }
-    renderCard(data);
-    cardValidationHandler.cleanErrors();
-    addPopup.close();
-})
-
-addButton.addEventListener('click', () => {
-    cardValidationHandler.cleanErrors();
-    addPopup.open();
-})
-addPopup.setEventListeners();
-
-addPopup._getInputValues();
 
 // Delete confirmation
 
