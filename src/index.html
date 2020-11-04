@@ -17,9 +17,9 @@
             <div class="profile__info">
                 <div class="profile__avatar-container">
                     <img class="profile__avatar" alt="Аватарка пользователя" src="./images/avatar.jpg">
-                    <div class="profile__avatar-overlay">
+                    <button class="profule__button profile__button_action_edit-avatar" type="button" aria-label="Редактировать аватар профиля">
 
-                      </div>
+                    </button>
                 </div>
                 <div class="profile__part">
                     <div class="profile__initials">
@@ -61,7 +61,7 @@
                     placeholder="Работа" minlength="2" maxlength="200" id="info">
                 <span class="form__input-error" id="info-error"></span>
                 <button type="submit" class="form__submit-button" aria-label="Отправить форму">Сохранить</button>
-            </form>
+            </form> 
             <button class="popup__close-button popup__edit-close" type="button" aria-label="Закрыть форму"></button>
         </div>
     </section>
@@ -79,6 +79,18 @@
                     aria-label="Отправить форму">Сохранить</button>
             </form>
             <button class="popup__close-button popup__add-close" type="button" aria-label="Закрыть форму"></button>
+        </div>
+    </section>
+    <section class="popup popup__edit_action_avatar">
+        <div class="popup__container a">  <!-- Fix this!!! -->
+            <p class="popup__title">Обновить аватар</p>
+            <form class="form form__edit-avatar" novalidate>
+                <input autocomplete="off" class="form__item form__item_action_edit-avatar" type="url" name="avatar"
+                    placeholder="Сслыка на аватар" required minlength="2" id="name">
+                <span class="form__input-error" id="name-error"></span>
+                <button type="submit" class="form__submit-button" aria-label="Отправить форму">Сохранить</button>
+            </form>
+            <button class="popup__close-button popup__edit-close" type="button" aria-label="Закрыть форму"></button>
         </div>
     </section>
     <section class="popup zoom">
