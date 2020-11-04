@@ -101,20 +101,29 @@ editButton.addEventListener('click', () => {
 
 editPopup.setEventListeners();
 
-//   fetch('https://mesto.nomoreparties.co/v1/cohort-17/cards', {
-//     headers: {
-//       authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585'
-//     }
-//   })
-//     .then(res => res.json())
-//     .then((data) => {
-//       JSON.stringify(data);
-//     //   console.log(data);
-//       const cardList = new Section({data : data, renderer: (item) => {
-//         renderCard(item); // Refacotr please
-//     }}, '.gallery');
-//     cardList.renderItems();
-//       })
+// Cardlist
+
+const cardList = new Section({
+    data: initialCards, renderer: (item) => {
+        renderCard(item);
+    }
+}, '.gallery');
+
+
+// Initial cards
+
+fetch('https://mesto.nomoreparties.co/v1/cohort-17/cards', {
+    headers: {
+        authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585'
+    }
+})
+    .then((res) => {
+        return res.json();
+    })
+    .then((res) => {
+        JSON.stringify(res);
+        cardList.renderItems(res);
+    })
 
 // FormCard
 
@@ -130,13 +139,6 @@ const editHandler = new UserInfo('.profile__name', '.profile__job', '.profile__a
 
 const imagePopup = new PopupWithImage('.zoom');
 imagePopup.setEventListeners();
-
-const cardList = new Section({
-    data: initialCards, renderer: (item) => {
-        renderCard(item);
-    }
-}, '.gallery');
-cardList.renderItems();
 
 function renderCard(item) {
     const card = new Card(item, '#card-template', (button, title, image) => {
