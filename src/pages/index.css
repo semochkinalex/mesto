@@ -47,3 +47,4 @@
 @import url(../blocks/confirmation/confirmation__container.css);
 @import url(../blocks/profile/__avatar-container/profile__avatar-container.css);
 @import url(../blocks/profile/__button/_action/profile__button_action_edit-avatar.css);
+@import url(../blocks/gallery/__like-counter/gallery__like-counter.css);

@@ -16,23 +16,57 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import Popup from '../components/Popup.js';
+import Api from '../components/Api.js';
+
+// Cardlist
+
+const cardList = new Section({
+    data: initialCards, renderer: (item) => {
+        renderCard(item);
+    }
+}, '.gallery');
+
+// Api
+
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-17',
+    headers: {"Content-Type" : "applicationes/json"},
+    token: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
+});  //'https://mesto.nomoreparties.co/v1/cohort-17', '16bbf0d2-da12-4d9c-809d-74b46ac64585'
+
+// Initail cards
+
+const serverCards = api.getInitialCards();
+serverCards.then((res) => {
+    cardList.renderItems(res);
+})
 
 // Profile information and edit.
 
-fetch('https://mesto.nomoreparties.co/v1/cohort-17/users/me', {
-    headers: {
-        authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585'
-    }
+const initialsInfo = api.getInitialsInfo();
+
+initialsInfo.then((res) => {
+    editHandler.setUserInfo ({
+        userInput: res.name,
+        jobInput: res.about,
+    })
+    editHandler.setUserAvatar(res.avatar);
 })
-    .then(res => res.json())
-    .then((res) => {
-        JSON.stringify(res);
-        editHandler.setUserInfo({
-            userInput: res.name,
-            jobInput: res.about,
-        });
-        editHandler.setUserAvatar(res.avatar);
-    });
+
+// fetch('https://mesto.nomoreparties.co/v1/cohort-17/users/me', {
+//     headers: {
+//         authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585'
+//     }
+// })
+//     .then(res => res.json())
+//     .then((res) => {
+//         JSON.stringify(res);
+//         editHandler.setUserInfo({
+//             userInput: res.name,
+//             jobInput: res.about,
+//         });
+//         editHandler.setUserAvatar(res.avatar);
+//     });
 
 // AvatarEdit
 
@@ -101,29 +135,21 @@ editButton.addEventListener('click', () => {
 
 editPopup.setEventListeners();
 
-// Cardlist
-
-const cardList = new Section({
-    data: initialCards, renderer: (item) => {
-        renderCard(item);
-    }
-}, '.gallery');
-
-
 // Initial cards
 
-fetch('https://mesto.nomoreparties.co/v1/cohort-17/cards', {
-    headers: {
-        authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585'
-    }
-})
-    .then((res) => {
-        return res.json();
-    })
-    .then((res) => {
-        JSON.stringify(res);
-        cardList.renderItems(res);
-    });
+// fetch('https://mesto.nomoreparties.co/v1/cohort-17/cards', {
+//     headers: {
+//         authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585'
+//     }
+// })
+//     .then((res) => {
+//         return res.json();
+//     })
+//     .then((res) => {
+//         JSON.stringify(res);
+//         console.log(res);
+//         cardList.renderItems(res); // Лучше спросить в слаке
+//     });
 
 // FormCard
 
@@ -151,10 +177,7 @@ const addPopup = new PopupWithForm('.popup__card', ({ title, link }) => {
             name: title,
             link: link,
         })
-    })
-      .then((res) => {
-          console.log(res);
-      })
+    });
 })
 
 addButton.addEventListener('click', () => {
@@ -178,6 +201,7 @@ imagePopup.setEventListeners();
 function renderCard(item) {
     const card = new Card(item, '#card-template', (button, title, image) => {
         button.addEventListener('click', () => {
+            card._handleLikeButton(button);
             imagePopup.open(
                 {
                     title: title,
@@ -194,10 +218,21 @@ function renderCard(item) {
                 button.parentElement.remove();
             })
 
-        })
+        },)
     const cardElement = card.renderCard();
     cardList.addItem(cardElement);
 }
+
+// fetch(`https://mesto.nomoreparties.co/v1/cohort-17/cards/likes/5fa29ee7fca8c000111d9178`, {
+//     method: 'PUT',
+//     headers: {
+//         authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
+//         'Content-Type': 'application/json'
+//     },
+// })
+//     .then((res) => {
+//         console.log(res);
+//     })
 
 // Delete confirmation
 
