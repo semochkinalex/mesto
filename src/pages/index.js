@@ -32,7 +32,7 @@ const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-17',
     headers: {"Content-Type" : "applicationes/json"},
     token: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
-});  //'https://mesto.nomoreparties.co/v1/cohort-17', '16bbf0d2-da12-4d9c-809d-74b46ac64585'
+});  //'https://mesto.nomoreparties.co/v1/cohort-17', '16bsdasdasdbf0d2-da12-4d9c-809d-74b46ac64585'
 
 // Initail cards
 
@@ -52,21 +52,6 @@ initialsInfo.then((res) => {
     })
     editHandler.setUserAvatar(res.avatar);
 })
-
-// fetch('https://mesto.nomoreparties.co/v1/cohort-17/users/me', {
-//     headers: {
-//         authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585'
-//     }
-// })
-//     .then(res => res.json())
-//     .then((res) => {
-//         JSON.stringify(res);
-//         editHandler.setUserInfo({
-//             userInput: res.name,
-//             jobInput: res.about,
-//         });
-//         editHandler.setUserAvatar(res.avatar);
-//     });
 
 // AvatarEdit
 
@@ -135,22 +120,6 @@ editButton.addEventListener('click', () => {
 
 editPopup.setEventListeners();
 
-// Initial cards
-
-// fetch('https://mesto.nomoreparties.co/v1/cohort-17/cards', {
-//     headers: {
-//         authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585'
-//     }
-// })
-//     .then((res) => {
-//         return res.json();
-//     })
-//     .then((res) => {
-//         JSON.stringify(res);
-//         console.log(res);
-//         cardList.renderItems(res); // Лучше спросить в слаке
-//     });
-
 // FormCard
 
 const cardValidationHandler = new FormValidator(selectors, formCard);
@@ -167,17 +136,7 @@ const addPopup = new PopupWithForm('.popup__card', ({ title, link }) => {
     cardValidationHandler.cleanErrors();
     addPopup.close();
 
-    fetch('https://mesto.nomoreparties.co/v1/cohort-17/cards', {
-        method: 'POST',
-        headers: {
-            authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            name: title,
-            link: link,
-        })
-    });
+    api.postCard(title, link);
 })
 
 addButton.addEventListener('click', () => {
@@ -218,7 +177,9 @@ function renderCard(item) {
                 button.parentElement.remove();
             })
 
-        },)
+        }, (id, isLiked) => {
+            api.handleLike(id, isLiked);
+        })
     const cardElement = card.renderCard();
     cardList.addItem(cardElement);
 }
