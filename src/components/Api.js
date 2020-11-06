@@ -91,6 +91,20 @@ export default class Api {
         }
     }
 
+    // Удалить карточку
+
+    deleteCard (id) {
+        return fetch(`${this._baseUrl}/cards/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: this._token,
+            }
+        })
+        .then((res) => {
+            console.log(res);
+        })
+    }
+
     // Добавить карточку
 
     postCard(title, link) {
@@ -105,7 +119,9 @@ export default class Api {
                 link: link,
             })
         })
-            .then(this._checkResult(res))
+            .then((res) => {
+                this._checkResult(res);
+            })
             .catch((res) => {
                 console.log(res);
             });

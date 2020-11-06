@@ -32,7 +32,7 @@ const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-17',
     headers: { "Content-Type": "applicationes/json" },
     token: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
-});  //'https://mesto.nomoreparties.co/v1/cohort-17', '16bsdasdasdbf0d2-da12-4d9c-809d-74b46ac64585'
+}); 
 
 // Initail cards
 
@@ -94,17 +94,6 @@ const editPopup = new PopupWithForm('.popup__edit', ({ name, job }) => {
     editValidationHandler.cleanErrors();
 
     api.postProfile(name, job);
-    // fetch('https://mesto.nomoreparties.co/v1/cohort-17/users/me', {
-    //     method: 'PATCH',
-    //     headers: {
-    //         authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         name: name,
-    //         about: job,
-    //     })
-    // });
 });
 
 editButton.addEventListener('click', () => {
@@ -167,19 +156,17 @@ function renderCard(item) {
             );
         })
     },
-        (button) => {
+        (button, id) => {
             confirmationPopup.open();
-            confirmationForm.addEventListener('submit', (evt) => { // I think refactor may be applied
+            confirmationForm.addEventListener('click', (evt) => {
                 evt.preventDefault();
                 confirmationPopup.close();
                 button.parentElement.remove();
+                api.deleteCard(id);
             })
 
         }, (id, isLiked) => {
-            const like = api.handleLike(id, isLiked);
-            like.then((res) => {
-                console.log(res);
-            });
+            api.handleLike(id, isLiked);
         })
     const cardElement = card.renderCard();
     cardList.addItem(cardElement);
