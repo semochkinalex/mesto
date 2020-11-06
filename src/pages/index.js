@@ -88,12 +88,19 @@ const editPopup = new PopupWithForm('.popup__edit', ({ name, job }) => {
         userInput: name,
         jobInput: job,
     });
+    
+    document.querySelector('#editSubmiter').textContent = 'Сохранение...';
+
+    // debugger - С помощью этого можно проверить :)
+
+    api.postProfile(name, job).then((res) => {
+        res.onload = document.querySelector('#editSubmiter').textContent = 'Сохранить';
+    });
 
     editPopup.close();
 
     editValidationHandler.cleanErrors();
 
-    api.postProfile(name, job);
 });
 
 editButton.addEventListener('click', () => {
