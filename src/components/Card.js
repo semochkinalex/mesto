@@ -44,17 +44,23 @@ export default class Card {
     _handleLikeButton (button) {
         button.addEventListener('click', () => {
             button.classList.toggle('gallery__like-button_liked');
-            if(button.classList.contains('gallery__like-button_liked')){
-                this._handleLike(this._id, false);
-                this._likeAmount += 1;
-                this._likeCounter.textContent = this._likeAmount;
-
+            if (button.classList.contains('gallery__like-button_liked')) {
+                this._handleLike(this._id, true);
             } else {
-                this._handleLike(this._id, true)
-                this._likeAmount -= 1;
-                this._likeCounter.textContent = this._likeAmount;
+                this._handleLike(this._id, false);
             }
         })
     }
 }
 
+// button.classList.toggle('gallery__like-button_liked');
+// if(button.classList.contains('gallery__like-button_liked')){
+//     this._handleLike(this._id, false);
+//     this._likeAmount += 1;
+//     this._likeCounter.textContent = this._likeAmount;
+
+// } else {
+//     this._handleLike(this._id, true)
+//     this._likeAmount -= 1;
+//     this._likeCounter.textContent = this._likeAmount;
+// }

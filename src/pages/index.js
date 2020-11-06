@@ -5,7 +5,7 @@ import {
     addButton, editButton, closeCard, closeEdit,
     titleName, linkName,
     nameInput, jobInput, zoomTitle, zoomImg,
-    initialCards, selectors, formCard, formEdit, // Delete unused constants
+    selectors, formCard, formEdit, // Delete unused constants
     confirmationForm, editAvatarButton, formAvatarEdit,
 } from '../utils/constants.js';
 
@@ -30,23 +30,24 @@ const cardList = new Section({
 
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-17',
-    headers: {"Content-Type" : "applicationes/json"},
+    headers: { "Content-Type": "applicationes/json" },
     token: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
 });  //'https://mesto.nomoreparties.co/v1/cohort-17', '16bsdasdasdbf0d2-da12-4d9c-809d-74b46ac64585'
 
 // Initail cards
 
-const serverCards = api.getInitialCards();
-serverCards.then((res) => {
+const initialCards = api.getInitialCards();
+
+initialCards.then((res) => {
     cardList.renderItems(res);
 })
 
 // Profile information and edit.
 
-const initialsInfo = api.getInitialsInfo();
+const profileInfo = api.getInitialsInfo();
 
-initialsInfo.then((res) => {
-    editHandler.setUserInfo ({
+profileInfo.then((res) => {
+    editHandler.setUserInfo({
         userInput: res.name,
         jobInput: res.about,
     })
@@ -61,25 +62,16 @@ editAvatarValidationHandler.enableValidation();  // Enable cleanErrors for this 
 // Profile avatar edit
 
 const editAvatarPopup = new PopupWithForm('.popup__edit_action_avatar', (input) => {
+
     editHandler.setUserAvatar(input.avatar);
     editAvatarPopup.close();
 
-    // Sending data to the server
+    // Patch it on the server
 
-
-    const profileAvatar = editHandler.getUserAvatar();
-
-    fetch('https://mesto.nomoreparties.co/v1/cohort-17/users/me/avatar ', {
-        method: 'PATCH',
-        headers: {
-            authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            avatar: profileAvatar.userAvatar,
-        })
-    });
+    api.postAvatar(input.avatar);
 });
+
+// Setting up editAvatar.
 
 editAvatarButton.addEventListener('click', () => {
     editAvatarValidationHandler.cleanErrors();
@@ -91,23 +83,28 @@ editAvatarPopup.setEventListeners();
 // editPopup
 
 const editPopup = new PopupWithForm('.popup__edit', ({ name, job }) => {
+
     editHandler.setUserInfo({
         userInput: name,
         jobInput: job,
     });
-    editValidationHandler.cleanErrors();
+
     editPopup.close();
-    fetch('https://mesto.nomoreparties.co/v1/cohort-17/users/me', {
-        method: 'PATCH',
-        headers: {
-            authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            name: name,
-            about: job,
-        })
-    });
+
+    editValidationHandler.cleanErrors();
+
+    api.postProfile(name, job);
+    // fetch('https://mesto.nomoreparties.co/v1/cohort-17/users/me', {
+    //     method: 'PATCH',
+    //     headers: {
+    //         authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //         name: name,
+    //         about: job,
+    //     })
+    // });
 });
 
 editButton.addEventListener('click', () => {
@@ -131,6 +128,7 @@ const addPopup = new PopupWithForm('.popup__card', ({ title, link }) => {
     const data = {
         name: title,
         link: link,
+        likes: [],
     }
     renderCard(data);
     cardValidationHandler.cleanErrors();
@@ -178,22 +176,14 @@ function renderCard(item) {
             })
 
         }, (id, isLiked) => {
-            api.handleLike(id, isLiked);
+            const like = api.handleLike(id, isLiked);
+            like.then((res) => {
+                console.log(res);
+            });
         })
     const cardElement = card.renderCard();
     cardList.addItem(cardElement);
 }
-
-// fetch(`https://mesto.nomoreparties.co/v1/cohort-17/cards/likes/5fa29ee7fca8c000111d9178`, {
-//     method: 'PUT',
-//     headers: {
-//         authorization: '16bbf0d2-da12-4d9c-809d-74b46ac64585',
-//         'Content-Type': 'application/json'
-//     },
-// })
-//     .then((res) => {
-//         console.log(res);
-//     })
 
 // Delete confirmation
 
