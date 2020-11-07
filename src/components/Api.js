@@ -120,7 +120,7 @@ export default class Api {
             })
         })
             .then((res) => {
-                this._checkResult(res);
+                return res.json();
             })
             .catch((res) => {
                 console.log(res);

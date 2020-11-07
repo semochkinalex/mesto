@@ -121,16 +121,22 @@ cardValidationHandler.enableValidation();
 // addPopup
 
 const addPopup = new PopupWithForm('.popup__card', ({ title, link }) => {
-    const data = {
-        name: title,
-        link: link,
-        likes: [],
-    }
-    renderCard(data);
+    const data = {};
+
+    const postedCard = api.postCard(title, link);
+
+    postedCard.then((res) => {
+        data.name = title;
+        data.link = link;
+        data.likes = res.likes;
+        data.owner = res.owner;
+        data._id = res._id;
+        renderCard(data);
+    });
+
     cardValidationHandler.cleanErrors();
     addPopup.close();
 
-    api.postCard(title, link);
 })
 
 addButton.addEventListener('click', () => {

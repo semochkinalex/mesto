@@ -4,6 +4,7 @@ export default class Card {
         this._image = link;     
         this._id = _id;
         this._userId = '9db34bc2362ec132bb89ca68';
+        this._owner = owner;
         this._ownerId = owner._id;
         this._likes = likes;
         this._likeAmount = likes.length;
@@ -34,6 +35,7 @@ export default class Card {
 
         return this._element;
     }
+
     _setEventListeners () {
         const deleteButton = this._element.querySelector('.gallery__delete-button');
         const likeButton = this._element.querySelector('.gallery__like-button');
