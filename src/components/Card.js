@@ -29,7 +29,7 @@ export default class Card {
         this._likeCounter = this._element.querySelector('.gallery__like-counter');
         this._likeCounter.textContent = this._likeAmount;
 
-        if (this._likes.some((like) => { return like._id === this._userId})) {
+        if (this._likes.some((like) => like._id === this._userId)) {
             this._element.querySelector(".gallery__like-button").classList.add("gallery__like-button_liked");
           }
 

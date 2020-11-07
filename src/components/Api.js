@@ -14,13 +14,7 @@ export default class Api {
             }
         })
             .then((res) => {
-                if (res.ok) {
-                    return res.json();
-                }
-            })
-            .then((res) => {
-                JSON.stringify(res);
-                return res;
+                return this._handleOriginalResponse(res);
             })
             .catch((res) => {
                 console.log(res);
@@ -41,7 +35,6 @@ export default class Api {
                 }
             })
             .then((res) => {
-                JSON.stringify(res);
                 return res;
             })
             .catch((res) => {
@@ -141,12 +134,18 @@ export default class Api {
             })
         })
             .then((res) => {
-                if (res.ok) {
-                    return res.json();
-                }
+                return this._handleOriginalResponse(res);
             })
             .catch((res) => {
                 console.log(res);
             });
+    }
+
+    _handleOriginalResponse (res) {
+        if (res.ok) { 
+            return res.json(); 
+        } 
+
+        return Promise.reject(`Error: ${res.status}`);
     }
 }
