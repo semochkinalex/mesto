@@ -3,7 +3,6 @@ export default class Api {
         this._baseUrl = config.baseUrl;
         this._token = config.token;
         this._headers = config.headers;
-        this._checkResult = this._checkResult.bind(this);
     }
 
     // Получает первоначальные карточки
@@ -15,11 +14,16 @@ export default class Api {
             }
         })
             .then((res) => {
-                return res.json()       // Make a function that does this.
+                if (res.ok) {
+                    return res.json();
+                }
             })
             .then((res) => {
                 JSON.stringify(res);
                 return res;
+            })
+            .catch((res) => {
+                console.log(res);
             })
     }
 
@@ -32,11 +36,16 @@ export default class Api {
             },
         })
             .then((res) => {
-                return res.json();
+                if (res.ok) {
+                    return res.json();
+                }
             })
             .then((res) => {
                 JSON.stringify(res);
                 return res;
+            })
+            .catch((res) => {
+                console.log(res);
             })
     }
 
@@ -54,6 +63,9 @@ export default class Api {
                 about: job,
             })
         })
+        .catch((res) => {
+            console.log(res);
+        })
     }
 
     // Patching the avatar
@@ -68,6 +80,9 @@ export default class Api {
             body: JSON.stringify({
                 avatar: avatarInput,
             })
+        })
+        .catch((res) => {
+            console.log(res);
         });
     }
 
@@ -80,6 +95,9 @@ export default class Api {
                     'Content-Type': 'application/json',
                 }
             })
+            .catch((res) => {
+                console.log(res);
+            })
         } else {
             return fetch(`${this._baseUrl}/cards/likes/${id}`, {
                 method: 'PUT',
@@ -87,6 +105,9 @@ export default class Api {
                     authorization: this._token,
                     'Content-Type': 'application/json',
                 }
+            })
+            .catch((res) => {
+                console.log(res);
             })
         }
     }
@@ -100,9 +121,9 @@ export default class Api {
                 authorization: this._token,
             }
         })
-        .then((res) => {
+        .catch((res) => {
             console.log(res);
-        })
+        });
     }
 
     // Добавить карточку
@@ -120,20 +141,12 @@ export default class Api {
             })
         })
             .then((res) => {
-                return res.json();
+                if (res.ok) {
+                    return res.json();
+                }
             })
             .catch((res) => {
                 console.log(res);
             });
     }
-
-    // Дополнительные функции 
-
-    _checkResult(res) {
-        if (res.ok) {
-            return res.json();
-        }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
-    };
 }
