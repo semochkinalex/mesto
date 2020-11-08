@@ -4,10 +4,6 @@ import "./index.css";
 import {
   addButton,
   editButton,
-  closeCard,
-  closeEdit,
-  titleName,
-  linkName,
   nameInput,
   jobInput,
   zoomTitle,
@@ -57,9 +53,7 @@ api.getInitialCards().then(res => {
 
 // Profile information and edit.
 
-const profileInfo = api.getInitialsInfo();
-
-profileInfo.then(res => {
+api.getInitialsInfo().then(res => {
   editHandler.setUserInfo({
     userInput: res.name,
     jobInput: res.about,
@@ -73,6 +67,7 @@ const editAvatarValidationHandler = new FormValidator(
   selectors,
   formAvatarEdit
 );
+
 editAvatarValidationHandler.enableValidation(); // Enable cleanErrors for this class.
 
 // Profile avatar edit
@@ -141,9 +136,8 @@ cardValidationHandler.enableValidation();
 const addPopup = new PopupWithForm(".popup__card", ({ title, link }) => {
   const data = {};
 
-  const postedCard = api.postCard(title, link);
-
-  postedCard
+  api
+    .postCard(title, link)
     .then(res => {
       data.name = title;
       data.link = link;

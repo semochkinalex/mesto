@@ -30,9 +30,7 @@ export default class Api {
       },
     })
       .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
+        return this._handleOriginalResponse(res);
       })
       .then(res => {
         return res;
